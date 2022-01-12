@@ -1,16 +1,42 @@
 import React from 'react';
+import CardCvcInput from '../card_cvc_input/card_cvc_input';
+import CardDateInput from '../card_date_input/card_date_input';
+import CardNameInput from '../card_name_input/card_name_input';
+import CardNumberInput from '../card_number_input/card_number_input';
+import CardPasswordInput from '../card_password_input/card_password_input';
 import CardPreview from '../card_preview/card_preview';
+import styles from './card_maker.module.css';
 
 const CardMaker = () => {
   return (
-    <>
-      <header>
-        <button> 카드추가 </button>
+    <div className={styles.container}>
+      <header className={styles.header}>
+        <button> <h3>카드추가</h3> </button>
       </header>
-      <form className="container">
-        <CardPreview />
-      </form>
-    </>
+      <section className={styles.main}>
+        <div className={styles.preview}>
+          <CardPreview />
+        </div>
+        <form className={styles.form}>
+          <div className={styles.numberInput}>
+            <CardNumberInput />
+          </div>
+          <div className={styles.dateInput}>
+            <CardDateInput />
+          </div>
+          <div className={styles.nameInput}>
+            <CardNameInput />
+          </div>
+          <div className={styles.cvcInput}>
+            <CardCvcInput />
+          </div>
+          <div className={styles.passwordInput}>
+            <CardPasswordInput />
+          </div>
+        </form>
+      </section>
+      
+    </div>
   );
 };
 

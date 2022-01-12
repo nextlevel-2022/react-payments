@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 5vh auto;
+  width: 55vw;
+  height: 100%;
+  padding: 3rem;
+  border-radius: 1rem;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateInput {
+  width: 50%;
+}
+
+.cvcInput {
+  width: 20%;
+}
+
+.passwordInput {
+  width: 60%;
+}
