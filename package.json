@@ -1,11 +1,12 @@
 {
   "name": "react-payments",
-  "version": "1.0.0",
+  "version": "0.0.1",
+  "main": "./src/index.js",
   "repository": "git@github.com:Leo-Xee/react-payments.git",
   "author": "Jangmin Lee <jang.xmin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --hot --open",
+    "dev": "webpack serve",
     "build": "webpack --config webpack.config.js --mode production"
   },
   "dependencies": {
@@ -18,8 +19,17 @@
     "@babel/preset-react": "^7.16.7",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
+    "eslint": "^8.6.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "prettier": "^2.5.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.66.0",
     "webpack-cli": "^4.9.1",
