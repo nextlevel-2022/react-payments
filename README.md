@@ -1,9 +1,17 @@
 <p align="middle" >
   <img src="https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/0fefce79602043a9b3281ee1dd8f4be6" width="400">
 </p>
-<h2 align="middle">페이먼츠</h2>
+<h2 align="middle">페이먼츠 - 기문</h2>
 <p align="middle">React 모바일 페이먼츠 애플리케이션</p>
-</p>
+
+# 주안점 
+
+- A를 적용해보았습니다!
+- B를 적용해보았습니다! 
+
+# 궁금한 것 
+
+- 이런 시도를 해봤는데 장단점이 있네요. 리뷰어님 의견이 궁금해요 ! 
 
 
 # 미션 키워드 
@@ -17,7 +25,7 @@
 # Step1 - Component-Driven Development
 ## 🚀 Getting Started
 > `Component-Driven Development` 에 따라 UI를 구성하고 재사용 가능한 `Component`를 작성합니다.
- 
+
 ✔️ `모바일 타겟`의 웹 앱을 구현하며 사용하기 `편리한 모바일 UI/UX`에 대해 고민해봅니다.
 ✔️ 다른 라이브러리나 프레임워크 없이 오로지 `React`만으로 상태를 관리하고 컴포넌트를 설계합니다.
 ✔️ `재사용 가능한 Component`를 직접 작성하고 사용합니다.
@@ -81,7 +89,7 @@
 # Step2 - Controlled & Uncontrolled Components + Context API
 ## 🚀 Getting Started
 > `Component-Driven Development` 에 따라 UI를 구성하고 재사용 가능한 `Component`를 작성합니다.
- 
+
 ✔️ `모바일 타겟`의 웹 앱을 구현하며 사용하기 `편리한 모바일 UI/UX`에 대해 고민해봅니다.
 ✔️ 다른 라이브러리나 프레임워크 없이 오로지 `React`만으로 상태를 관리하고 컴포넌트를 설계합니다.
 ✔️ React `Context API`를 활용합니다.
