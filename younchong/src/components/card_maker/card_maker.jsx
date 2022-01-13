@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import CardCvcInput from '../card_cvc_input/card_cvc_input';
 import CardDateInput from '../card_date_input/card_date_input';
 import CardNameInput from '../card_name_input/card_name_input';
@@ -8,6 +10,9 @@ import CardPreview from '../card_preview/card_preview';
 import styles from './card_maker.module.css';
 
 const CardMaker = () => {
+  const [numbers, setNumber] = useState({});
+  
+  
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -15,11 +20,11 @@ const CardMaker = () => {
       </header>
       <section className={styles.main}>
         <div className={styles.preview}>
-          <CardPreview />
+          <CardPreview numbers={numbers}/>
         </div>
         <form className={styles.form}>
           <div className={styles.numberInput}>
-            <CardNumberInput />
+            <CardNumberInput numbers={numbers} setNumber={setNumber}/>
           </div>
           <div className={styles.dateInput}>
             <CardDateInput />
