@@ -1,7 +1,12 @@
 import React from "react";
+import Button from "./components/Button";
 
-function App() {
-	return <div>Hello, React-App</div>;
-}
+const App = () => {
+	return (
+		<div>
+			<Button />
+		</div>
+	);
+};
 
 export default App;
