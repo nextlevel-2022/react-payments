@@ -23,6 +23,7 @@
 			2,
 			{ "namedComponents": "arrow-function" }
 		],
-		"react/jsx-props-no-spreading": 0
+		"react/jsx-props-no-spreading": 0,
+		"no-console": 0
 	}
 }

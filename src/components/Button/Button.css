@@ -1,0 +1,11 @@
+.button-box {
+	width: 100%;
+	text-align: right;
+}
+.button-text {
+	cursor: pointer;
+	border: none;
+	background: none;
+	font-weight: bold;
+	color: #04c09e;
+}
