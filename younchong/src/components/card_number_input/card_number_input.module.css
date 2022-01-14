@@ -44,7 +44,12 @@
   border: 3px solid black;
 }
 
-.inputBar {
+.inputBar.hidden{
+  visibility: hidden;
+}
+
+.inputBar.visible{
   color: grey;
   font-size: 2rem;
+  visibility: visible;
 }

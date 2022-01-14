@@ -2,7 +2,9 @@ import React from 'react';
 import styles from'./card_preview.module.css';
 const CardPreview = ({numbers}) => {
   //props 받아서 각각에 전달
-
+  const tellCompany = () => {
+    
+  }
   return (
     <div className={styles.container}>
       <header className={styles.cardTop}></header>
