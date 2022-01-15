@@ -1,16 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ButtonContainer from "../../containers/ButtonContainer";
+
+import TextButton from "../../components/TextButton";
 
 const CardAdd = ({ process, setProcess }) => {
 	return (
 		<div className="app">
 			<h2>카드 추가 페이지</h2>
-			<ButtonContainer
-				process={process}
-				setProcess={setProcess}
-				content="다음"
-			/>
+			<TextButton process={process} setProcess={setProcess} content="다음" />
 		</div>
 	);
 };

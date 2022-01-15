@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import CardList from "./components/CardList";
-import CardAdd from "./components/CardAdd";
-import CardDone from "./components/CardDone";
+import CardList from "./pages/CardList";
+import CardAdd from "./pages/CardAdd";
+import CardDone from "./pages/CardDone";
 
 const App = () => {
 	const [process, setProcess] = useState("list"); // list -> add -> done
