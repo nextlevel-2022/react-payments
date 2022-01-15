@@ -1,20 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CardButton from "../../components/CardButton";
 
-import TextButton from "../../components/TextButton";
+const CardList = ({ setPage }) => {
+	const onClick = () => {
+		setPage("add");
+	};
 
-const CardList = ({ process, setProcess }) => {
 	return (
 		<div className="app">
 			<h2>카드 목록 페이지</h2>
-			<TextButton process={process} setProcess={setProcess} />
+			<CardButton onClick={onClick} />
 		</div>
 	);
 };
 
 CardList.propTypes = {
-	process: PropTypes.string.isRequired,
-	setProcess: PropTypes.func.isRequired,
+	setPage: PropTypes.func.isRequired,
 };
 
 export default CardList;

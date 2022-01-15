@@ -1,19 +1,12 @@
 import React from "react";
-import Button from "./index";
+import TextButton from "./index";
 
 export default {
-	title: "components/Button",
-	component: Button,
-	decorators: [
-		Story => (
-			<div style={{ margin: "3rem" }}>
-				<Story />
-			</div>
-		),
-	],
+	title: "components/TextButton",
+	component: TextButton,
 };
 
-const Template = args => <Button {...args} />;
+const Template = args => <TextButton {...args} />;
 
 export const Default = Template.bind({});
-Default.args = { content: "Default" };
+Default.args = { content: "다음" };
