@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./TextButton.css";
-
 const Button = ({ content, onClick }) => {
 	return (
 		<div className="button-box">

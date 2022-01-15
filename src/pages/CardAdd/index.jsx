@@ -10,7 +10,7 @@ const CardAdd = ({ setPage }) => {
 
 	return (
 		<div className="app">
-			<h2>카드 추가 페이지</h2>
+			<h1 className="page-title">카드 추가</h1>
 			<TextButton content="다음" onClick={onClick} />
 		</div>
 	);

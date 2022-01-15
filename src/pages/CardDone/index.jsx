@@ -10,7 +10,7 @@ const CardDone = ({ setPage }) => {
 
 	return (
 		<div className="app">
-			<h2>카드 추가완료 페이지</h2>
+			<h1 className="page-title">등록완료</h1>
 			<TextButton content="확인" onClick={onClick} />
 		</div>
 	);

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import CardButton from "../../components/CardButton";
 
 const CardList = ({ setPage }) => {
@@ -9,7 +10,7 @@ const CardList = ({ setPage }) => {
 
 	return (
 		<div className="app">
-			<h2>카드 목록 페이지</h2>
+			<h1 className="page-title">보유카드</h1>
 			<CardButton onClick={onClick} />
 		</div>
 	);

@@ -9,3 +9,4 @@ export default {
 const Template = args => <CardButton {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {};
