@@ -1,17 +1,30 @@
 import React from 'react';
 import styles from'./card_preview.module.css';
 const CardPreview = ({numbers}) => {
-  //props 받아서 각각에 전달
-  const tellCompany = () => {
+  function tellCardTheme (numbers) {// 로직 더 고민해보기
+    let number = "";
+    if (numbers["thirdInput"]) {
+      number = numbers["firstInput"] + numbers["secondInput"];
+
+      if (number >= 0 && number < 10000000) {
+        return styles.yellow;
+      } else if (number >= 10000000 && number < 40000000) {
+        return styles.red;
+      } else if (number >= 40000000 && number < 70000000) {
+        return styles.blue;
+      }
+    }
+
     
   }
+  
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${tellCardTheme(numbers)}`} >
       <header className={styles.cardTop}></header>
       <section className={styles.cardMiddle}>
         <article className={styles.cardChip}></article>
           {Object.keys(numbers).map(key => {
-            if (key === "3" || key === "4") {
+            if (key === "thirdInput" || key === "fourthInput") {
               let count = numbers[key].length;
               let passoword = "";
               while (passoword.length !== count) {

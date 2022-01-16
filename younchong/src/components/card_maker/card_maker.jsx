@@ -11,7 +11,7 @@ import styles from './card_maker.module.css';
 
 const CardMaker = () => {
   const [numbers, setNumber] = useState({});
-  
+  const [date, setDate] = useState();
   
   return (
     <div className={styles.container}>
