@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 const CardButton = ({ onClick }) => {
 	return (
-		<div className="card-box" onClick={onClick}>
+		<button className="card-box" onClick={onClick}>
 			<div className="empty-card">+</div>
-		</div>
+		</button>
 	);
 };
 
