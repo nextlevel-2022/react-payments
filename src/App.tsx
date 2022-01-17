@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import ListPage from "./pages/ListPage";
-import AddCardPage from "./pages/AddCardPage";
+import AddCardPage from './pages/AddCard';
+import ListPage from "./pages/List";
 
 function App() {
   return (
