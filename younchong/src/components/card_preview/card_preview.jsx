@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from'./card_preview.module.css';
-const CardPreview = ({numbers, date}) => {
+const CardPreview = ({numbers, date, name}) => {
   function tellCardTheme (numbers) {// 로직 더 고민해보기
     let number = "";
     if (numbers["thirdInput"]) {
@@ -41,7 +41,7 @@ const CardPreview = ({numbers, date}) => {
       </section>
       <footer className={styles.cardBottom}>
         <article className={styles.cardBottomInformation}>
-          <span className={styles.cardName}>NAME</span>
+          <span className={styles.cardName}>{`${name !== null ? name : "NAME"}`}</span>
           <span className={styles.cardDate}>{`${date["MM"] ? date["MM"] : "MM"} / ${date["YY"] ? date["YY"] : "YY"}`}</span>
         </article>
       </footer>

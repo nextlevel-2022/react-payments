@@ -13,6 +13,7 @@ const CardMaker = () => {
   const [numbers, setNumber] = useState({});
   const [date, setDate] = useState({"MM": null, "YY": null});
   const [name, setName] = useState(null);
+  const [cvc, setCVC] = useState(null);
   const monthRef = useRef();
   const nameRef = useRef();
 
@@ -23,7 +24,7 @@ const CardMaker = () => {
       </header>
       <section className={styles.main}>
         <div className={styles.preview}>
-          <CardPreview numbers={numbers} date={date}/>
+          <CardPreview numbers={numbers} date={date} name={name}/>
         </div>
         <form className={styles.form}>
           <div className={styles.numberInput}>
@@ -36,7 +37,7 @@ const CardMaker = () => {
             <CardNameInput name={name} setName={setName} nameRef={nameRef}/>
           </div>
           <div className={styles.cvcInput}>
-            <CardCvcInput />
+            <CardCvcInput cvc={cvc} setCVC={setCVC}/>
           </div>
           <div className={styles.passwordInput}>
             <CardPasswordInput />
