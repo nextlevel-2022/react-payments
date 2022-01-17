@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
   table {border-collapse:collapse;border-spacing:0}
 
   /* global */
+  body {
+   font-family: "Roboto", "sans-serif";
+  }
+
   .root-container {
     height: 100vh;
     display: flex;
@@ -19,7 +23,6 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     background-color: #e5e5e5;
-    font-family: "Roboto", "sans-serif";
   }
 
   input {

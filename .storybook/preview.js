@@ -1,8 +1,10 @@
 import GlobalStyle from "../src/styles/global/GlobalStyle";
+import GlobalFonts from "../src/styles/fonts/";
 
 export const decorators = [
 	Story => (
 		<>
+			<GlobalFonts />
 			<GlobalStyle />
 			<Story />
 		</>
