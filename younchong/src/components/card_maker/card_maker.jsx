@@ -14,14 +14,16 @@ const CardMaker = () => {
   const [date, setDate] = useState({"MM": null, "YY": null});
   const [name, setName] = useState(null);
   const [cvc, setCVC] = useState(null);
+  const [password, setPassword] = useState({});
   const monthRef = useRef();
   const nameRef = useRef();
   const passwordRef =useRef();
+  const nextBtnRef = useRef();
 
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <button> <h3>카드추가</h3> </button>
+        <button className={styles.button}> <h3>카드추가</h3> </button>
       </header>
       <section className={styles.main}>
         <div className={styles.preview}>
@@ -41,11 +43,13 @@ const CardMaker = () => {
             <CardCvcInput cvc={cvc} setCVC={setCVC} nextFocus={passwordRef}/>
           </div>
           <div className={styles.passwordInput}>
-            <CardPasswordInput firstRef={passwordRef}/>
+            <CardPasswordInput firstRef={passwordRef} password={password} setPassword={setPassword} nextFocus={nextBtnRef}/>
           </div>
         </form>
       </section>
-      
+      <footer className={styles.footer}>
+        <button ref={nextBtnRef} className={styles.button}> <h4>다음</h4> </button>
+      </footer>
     </div>
   );
 };
