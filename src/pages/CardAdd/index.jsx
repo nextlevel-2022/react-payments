@@ -2,10 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import TextButton from "../../components/TextButton";
+import { DONE } from "../../config/constant";
 
 const CardAdd = ({ setPage }) => {
 	const onClick = () => {
-		setPage("done");
+		setPage(DONE);
 	};
 
 	return (
