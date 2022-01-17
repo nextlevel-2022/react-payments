@@ -16,6 +16,7 @@ const CardMaker = () => {
   const [cvc, setCVC] = useState(null);
   const monthRef = useRef();
   const nameRef = useRef();
+  const passwordRef =useRef();
 
   return (
     <div className={styles.container}>
@@ -37,10 +38,10 @@ const CardMaker = () => {
             <CardNameInput name={name} setName={setName} nameRef={nameRef}/>
           </div>
           <div className={styles.cvcInput}>
-            <CardCvcInput cvc={cvc} setCVC={setCVC}/>
+            <CardCvcInput cvc={cvc} setCVC={setCVC} nextFocus={passwordRef}/>
           </div>
           <div className={styles.passwordInput}>
-            <CardPasswordInput />
+            <CardPasswordInput firstRef={passwordRef}/>
           </div>
         </form>
       </section>
