@@ -38,13 +38,17 @@ module.exports = {
 				use: ["style-loader", "css-loader"],
 			},
 			{
-				test: /\.png|svg|jpg|gif$/,
+				test: /\.(png|svg|jpg|gif)$/,
 				use: {
 					loader: "file-loader",
 					options: {
 						name: "[name].[ext]",
 					},
 				},
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)/,
+				use: ["file-loader"],
 			},
 		],
 	},

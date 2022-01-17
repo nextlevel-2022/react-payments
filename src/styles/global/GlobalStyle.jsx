@@ -11,6 +11,42 @@ const GlobalStyle = createGlobalStyle`
   a {text-decoration:none}
   table {border-collapse:collapse;border-spacing:0}
 
+  /* global */
+  .root-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e5e5;
+    font-family: "Roboto", "sans-serif";
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  .root {
+    background-color: #fff;
+    width: 375px;
+    min-width: 375px;
+    height: 700px;
+    border-radius: 15px;
+  }
+
+  .page-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #383838;
+  }
+
+  .app {
+    height: 100%;
+    padding: 16px 24px;
+  }
 `;
 
 export default GlobalStyle;
