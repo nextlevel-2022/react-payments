@@ -30,6 +30,7 @@ export const parameters = {
 			date: /Date$/,
 		},
 	},
+	layout: "fullscreen",
 	viewport: {
 		viewports: customViewports,
 		defaultViewport: "mobile",
