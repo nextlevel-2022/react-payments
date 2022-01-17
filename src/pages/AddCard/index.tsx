@@ -1,12 +1,16 @@
 import React from "react";
 import { EmptyCardItem } from "../../components/EmptyCardItem";
+import { Link } from "react-router-dom";
 
 export default function AddCardPage() {
   return <div className="root">
     <div className="app">
-      <h2 className="page-title">
-        카드 추가
-      </h2>
+
+      <Link to={'/'}>
+        <h2 className="page-title">
+          {'< 카드 추가'}
+        </h2>
+      </Link>
       <EmptyCardItem/>
       <div className="input-container">
         <span className="input-title">카드 번호</span>

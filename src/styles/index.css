@@ -40,3 +40,7 @@ input {
 
     color: #383838;
 }
+
+a {
+    text-decoration: none;
+}
