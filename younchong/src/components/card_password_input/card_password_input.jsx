@@ -4,7 +4,7 @@ import styles from './card_password_input.module.css';
 const CardPasswordInput = () => {
   return (
     <article className={styles.inputContainer}>
-      <span className={styles.title}>카드 비밀번호</span>
+      <label className={styles.title}>카드 비밀번호</label>
       <div className={styles.inputBox}>
         <input type="password" className={styles.inputBasic} />
         <input type="password" className={styles.inputBasic} />

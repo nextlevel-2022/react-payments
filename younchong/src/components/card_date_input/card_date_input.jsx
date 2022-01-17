@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import styles from "./card_date_input.module.css";
 
-const CardDateInput = ({date, setDate, monthRef}) => {
+const CardDateInput = ({date, setDate, monthRef, nextFocus}) => {
   // refactoring functions
   const yearRef = useRef();
 
@@ -25,6 +25,8 @@ const CardDateInput = ({date, setDate, monthRef}) => {
         update["YY"] = value;
         return update;
       })
+
+      value.length === 2 && nextFocus.current.focus();
     }
   }
   

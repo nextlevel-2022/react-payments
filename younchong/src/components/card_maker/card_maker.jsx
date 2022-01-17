@@ -12,7 +12,9 @@ import styles from './card_maker.module.css';
 const CardMaker = () => {
   const [numbers, setNumber] = useState({});
   const [date, setDate] = useState({"MM": null, "YY": null});
+  const [name, setName] = useState(null);
   const monthRef = useRef();
+  const nameRef = useRef();
 
   return (
     <div className={styles.container}>
@@ -28,10 +30,10 @@ const CardMaker = () => {
             <CardNumberInput numbers={numbers} setNumber={setNumber} nextFocus={monthRef}/>
           </div>
           <div className={styles.dateInput}>
-            <CardDateInput date={date} setDate={setDate} monthRef={monthRef}/>
+            <CardDateInput date={date} setDate={setDate} monthRef={monthRef} nextFocus={nameRef}/>
           </div>
           <div className={styles.nameInput}>
-            <CardNameInput />
+            <CardNameInput name={name} setName={setName} nameRef={nameRef}/>
           </div>
           <div className={styles.cvcInput}>
             <CardCvcInput />
