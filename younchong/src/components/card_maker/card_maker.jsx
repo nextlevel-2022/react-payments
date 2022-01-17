@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import CardCvcInput from '../card_cvc_input/card_cvc_input';
@@ -11,8 +11,9 @@ import styles from './card_maker.module.css';
 
 const CardMaker = () => {
   const [numbers, setNumber] = useState({});
-  const [date, setDate] = useState();
-  
+  const [date, setDate] = useState({"MM": null, "YY": null});
+  const monthRef = useRef();
+
   return (
     <div className={styles.container}>
       <header className={styles.header}>
@@ -20,14 +21,14 @@ const CardMaker = () => {
       </header>
       <section className={styles.main}>
         <div className={styles.preview}>
-          <CardPreview numbers={numbers}/>
+          <CardPreview numbers={numbers} date={date}/>
         </div>
         <form className={styles.form}>
           <div className={styles.numberInput}>
-            <CardNumberInput numbers={numbers} setNumber={setNumber}/>
+            <CardNumberInput numbers={numbers} setNumber={setNumber} nextFocus={monthRef}/>
           </div>
           <div className={styles.dateInput}>
-            <CardDateInput />
+            <CardDateInput date={date} setDate={setDate} monthRef={monthRef}/>
           </div>
           <div className={styles.nameInput}>
             <CardNameInput />

@@ -37,3 +37,13 @@
   border-radius: 0.25rem;
   font-size: 1.5rem;
 }
+
+.slash {
+  visibility: hidden;
+}
+
+.slash.visible {
+  color: grey;
+  font-size: 2rem;
+  visibility: visible;
+}

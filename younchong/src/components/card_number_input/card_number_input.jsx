@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styles from "./card_number_input.module.css";
 import Dash from './dash';
 
-const CardNumberInput = ({numbers, setNumber}) => {
+const CardNumberInput = ({numbers, setNumber, nextFocus}) => {
   const firstRef = useRef();
   const secondRef = useRef();
   const thirdRef = useRef();
@@ -19,7 +19,7 @@ const CardNumberInput = ({numbers, setNumber}) => {
       updated[id] = number;
       return updated;
       })
-      if (number.length === 4 && id !== "fourthInput") { // 다음 focus 조절 만료일로
+      if (number.length === 4) { // 다음 focus 조절 만료일로
         nextRef[id].current.focus();
       }
     } 
@@ -29,7 +29,7 @@ const CardNumberInput = ({numbers, setNumber}) => {
     "firstInput" : secondRef,
     "secondInput" : thirdRef,
     "thirdInput" : fourthRef,
-    "fourthInput" : null
+    "fourthInput" : nextFocus
   };
 
 
