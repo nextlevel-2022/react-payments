@@ -23,7 +23,7 @@ const CardMaker = () => {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <button className={styles.button}> <h3>카드추가</h3> </button>
+        <button className={styles.button} > <h3>&#60; 카드추가</h3> </button>
       </header>
       <section className={styles.main}>
         <div className={styles.preview}>

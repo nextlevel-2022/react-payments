@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styles from './card_password_input.module.css';
 
 const CardPasswordInput = ({firstRef, password, setPassword, nextFocus}) => {
-  //auto focus 고민해보기
+  //input value 고민
   const secondRef = useRef();
   const thirdRef = useRef();
   const fourthRef = useRef()
@@ -31,10 +31,10 @@ const CardPasswordInput = ({firstRef, password, setPassword, nextFocus}) => {
     <article className={styles.inputContainer}>
       <label className={styles.title}>카드 비밀번호</label>
       <div className={styles.inputBox}>
-        <input type="password" className={styles.inputBasic} ref={firstRef} id="firstPassword" onChange={onChange}/>
-        <input type="password" className={styles.inputBasic} ref={secondRef} id="secondPassword" onChange={onChange}/>
-        <input type="password" className={styles.inputBasic} ref={thirdRef} id="thirdPassword" onChange={onChange}/>
-        <input type="password" className={styles.inputBasic} ref={fourthRef} id="fourthPassword" onChange={onChange}/>
+        <input type="password" className={styles.inputBasic} ref={firstRef} id="firstPassword" onChange={onChange} value={password["firstPassword"]}/>
+        <input type="password" className={styles.inputBasic} ref={secondRef} id="secondPassword" onChange={onChange} value={password["secondPassword"]}/>
+        <input type="password" className={styles.inputBasic} ref={thirdRef} id="thirdPassword" onChange={onChange} value={password["thirdPassword"]}/>
+        <input type="password" className={styles.inputBasic} ref={fourthRef} id="fourthPassword" onChange={onChange} value={password["fourthPassword"]}/>
       </div>
     </article>
   );

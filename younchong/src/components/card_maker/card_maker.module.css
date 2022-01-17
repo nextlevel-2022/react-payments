@@ -5,8 +5,13 @@
   margin: 5vh auto;
   width: 55vw;
   height: 100%;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 1rem;
+}
+
+.button {
+  background: transparent;
+  border: none;
 }
 
 .preview {
@@ -30,4 +35,9 @@
 
 .passwordInput {
   width: 60%;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
 }
