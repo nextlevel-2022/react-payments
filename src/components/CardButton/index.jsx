@@ -15,6 +15,8 @@ const StyledCardButton = styled.button`
 	justify-content: center;
 	align-items: center;
 
+	margin-top: 60px;
+
 	width: 208px;
 	height: 130px;
 

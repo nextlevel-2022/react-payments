@@ -9,3 +9,11 @@ export default {
 const Template = args => <CardList {...args} />;
 
 export const Default = Template.bind({});
+Default.args = {
+	cardInfo: {
+		cardName: "로이드카드",
+		cardNumber: "0000 1111 2222 3333",
+		cardOwner: "NAME",
+		cardExpirationDate: "MM/YY",
+	},
+};

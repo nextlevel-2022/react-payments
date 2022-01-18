@@ -5,6 +5,7 @@ import styled from "styled-components";
 import TextButton from "../../components/TextButton";
 import { DONE, LIST } from "../../config/constant";
 import BackButton from "../../components/ BackButton";
+// import Card from "../../components/Card";
 
 const CardAdd = ({ setPage }) => {
 	const onBack = () => {
@@ -21,6 +22,7 @@ const CardAdd = ({ setPage }) => {
 				<BackButton onClick={onBack} />
 				<h1 className="page-title">카드 추가</h1>
 			</StyledHeader>
+			<CardBox>{/* <Card /> */}</CardBox>
 			<TextButton content="다음" onClick={onNext} />
 		</div>
 	);
@@ -31,8 +33,15 @@ const StyledHeader = styled.header`
 	padding: 10px 5px;
 
 	h1 {
-		padding-left: 14px;
+		padding-left: 15px;
 	}
+`;
+
+const CardBox = styled.div`
+	display: felx;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0;
 `;
 
 CardAdd.propTypes = {
