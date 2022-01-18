@@ -13,7 +13,7 @@ const CardCvcInput = ({cvc, setCVC, nextFocus}) => {
     <article className={styles.inputContainer}>
       <span className={styles.title}>보안코드(CVC/CVV)</span>
       <div className={styles.inputBox}>
-        <input type="password" className={styles.inputBasic} onChange={onChange} value={cvc}/>
+        <input type="password" className={styles.inputBasic} onChange={onChange} value={cvc !== null ? cvc : ""}/>
       </div>
     </article>
   );
