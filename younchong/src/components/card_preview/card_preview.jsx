@@ -1,27 +1,15 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styles from'./card_preview.module.css';
-const CardPreview = ({numbers, date, name}) => {
-  function tellCardTheme (numbers) {// 로직 더 고민해보기
-    let number = "";
-    if (numbers["thirdInput"]) {
-      number = numbers["firstInput"] + numbers["secondInput"];
+const CardPreview = ({numbers, date, name, company}) => {
+  // 밖에서 cardCompany 받아와서 클래스네임에 넣어주기
 
-      if (number >= 0 && number < 10000000) {
-        return styles.yellow;
-      } else if (number >= 10000000 && number < 40000000) {
-        return styles.red;
-      } else if (number >= 40000000 && number < 70000000) {
-        return styles.blue;
-      } else {
-        console.log("out of ragne") // card selection modal
-      }
-    }
-
-    
+  const companyTheme = {
+    background: company.color
   }
-  
+
   return (
-    <div className={`${styles.container} ${tellCardTheme(numbers)}`} >
+    <div className={styles.container} style={companyTheme} >
       <header className={styles.cardTop}></header>
       <section className={styles.cardMiddle}>
         <article className={styles.cardChip}></article>

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
-import { useEffect } from 'react';
 import { useState } from 'react';
+import CardCompanyModal from '../card_company_modal/card_company_modal';
 import CardCvcInput from '../card_cvc_input/card_cvc_input';
 import CardDateInput from '../card_date_input/card_date_input';
 import CardNameInput from '../card_name_input/card_name_input';
@@ -11,6 +11,7 @@ import styles from './card_maker.module.css';
 
 const CardMaker = () => {
   const [numbers, setNumber] = useState({});
+  const [company, setCompany] = useState({});
   const [date, setDate] = useState({"MM": null, "YY": null});
   const [name, setName] = useState(null);
   const [cvc, setCVC] = useState(null);
@@ -23,16 +24,17 @@ const CardMaker = () => {
 
   return (
     <div className={styles.container}>
+      {false && <CardCompanyModal />}
       <header className={styles.header}>
         <button className={styles.button} > <h3>&#60; 카드추가</h3> </button>
       </header>
       <section className={styles.main}>
         <div className={styles.preview}>
-          <CardPreview numbers={numbers} date={date} name={name}/>
+          <CardPreview numbers={numbers} date={date} name={name} company={company}/>
         </div>
         <form className={styles.form}>
           <div className={styles.numberInput}>
-            <CardNumberInput numbers={numbers} setNumber={setNumber} nextFocus={monthRef}/>
+            <CardNumberInput numbers={numbers} setNumber={setNumber} nextFocus={monthRef} setCompany={setCompany}/>
           </div>
           <div className={styles.dateInput}>
             <CardDateInput date={date} setDate={setDate} monthRef={monthRef} nextFocus={nameRef}/>

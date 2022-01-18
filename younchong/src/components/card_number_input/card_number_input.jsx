@@ -1,10 +1,11 @@
 import React from 'react';
 import { useRef } from 'react';
 import { useState } from 'react';
+import { CARD_COMPANY_INFO } from './card_company_info';
 import styles from "./card_number_input.module.css";
 import Dash from './dash';
 
-const CardNumberInput = ({numbers, setNumber, nextFocus}) => {
+const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany}) => {
   const firstRef = useRef();
   const secondRef = useRef();
   const thirdRef = useRef();
@@ -19,10 +20,14 @@ const CardNumberInput = ({numbers, setNumber, nextFocus}) => {
       updated[id] = number;
       return updated;
       })
-      if (number.length === 4) { // 다음 focus 조절 만료일로
-        nextRef[id].current.focus();
-      }
+      
+      number.length === 4 && nextRef[id].current.focus();
     } 
+    const firstSixDigit = numbers["firstInput"] + numbers["secondInput"];
+    if (firstSixDigit.length === 6) {
+      const selectedCompany = CARD_COMPANY_INFO.filter(company => company.patterns.includes(firstSixDigit));
+      selectedCompany[0] ? setCompany(selectedCompany[0]) : setCompany(null); // modal로 전달하기
+    }
   }
 
   const nextRef = {
