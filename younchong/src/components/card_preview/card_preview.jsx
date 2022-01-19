@@ -3,13 +3,15 @@ import { useEffect } from 'react';
 import styles from'./card_preview.module.css';
 const CardPreview = ({numbers, date, name, company}) => {
   // 밖에서 cardCompany 받아와서 클래스네임에 넣어주기
-
-  const companyTheme = {
-    background: company.color
+  function getTheme (company) {
+    if (company) {
+      return {background : company.color};
+    } else {
+      return;
+    }
   }
-
   return (
-    <div className={styles.container} style={companyTheme} >
+    <div className={styles.container} style={getTheme(company)} >
       <header className={styles.cardTop}></header>
       <section className={styles.cardMiddle}>
         <article className={styles.cardChip}></article>

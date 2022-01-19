@@ -24,7 +24,7 @@ const CardMaker = () => {
 
   return (
     <div className={styles.container}>
-      {false && <CardCompanyModal />}
+      {company === null && <CardCompanyModal setCompany={setCompany}/>}
       <header className={styles.header}>
         <button className={styles.button} > <h3>&#60; 카드추가</h3> </button>
       </header>
