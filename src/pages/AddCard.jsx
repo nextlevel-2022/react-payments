@@ -1,10 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const AddCard = () => {
+  const history = useNavigate();
+
   return (
     <>
       <div className="app">
-        <h2 className="page-title">&lt; 카드 추가</h2>
+        <h2 className="page-title">
+          <span onClick={() => history('/')}>&lt; </span>
+          카드 추가
+        </h2>
         <div className="card-box">
           <div className="empty-card">
             <div className="card-top"></div>
