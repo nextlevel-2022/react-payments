@@ -14,6 +14,18 @@ const GlobalStyle = createGlobalStyle`
   /* global */
   body {
    font-family: "Roboto", "sans-serif";
+   font-size: 16px;
+  }
+
+  /* Remove Spinner */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
   }
 
   .root-container {
@@ -23,10 +35,6 @@ const GlobalStyle = createGlobalStyle`
     justify-content: center;
     align-items: center;
     background-color: #e5e5e5;
-  }
-
-  input {
-    font-size: 16px;
   }
 
   .root {

@@ -3,30 +3,66 @@ import React, { useState } from "react";
 import CardList from "./pages/CardList";
 import CardAdd from "./pages/CardAdd";
 import CardDone from "./pages/CardDone";
-import { LIST } from "./config/constant";
-import useForm from "./hooks/useForm";
+import useInput from "./hooks/useInput";
+import {
+	ADD,
+	DONE,
+	LIST,
+	FIRST,
+	SECOND,
+	THIRD,
+	FOURTH,
+	MONTH,
+	YEAR,
+} from "./config/constant";
 
 const App = () => {
 	const [page, setPage] = useState(LIST); // list -> add -> done
-	const [cardInfo, onChangeCardInfo] = useForm({
-		cardName: "로이드카드",
-		cardNumber: "1111 2222 3333 4444",
-		cardOwner: "NAME",
-		cardExpirationDate: "MM/YY",
+	const [cardName, onChangeCardName] = useInput("");
+	const [cardNumber, onChangeCardNumber] = useInput({
+		[FIRST]: "",
+		[SECOND]: "",
+		[THIRD]: "",
+		[FOURTH]: "",
 	});
+	const [cardOwner, onChangeCardOwner] = useInput("");
+	const [cardExpirationDate, onChangeCardExpirationDate] = useInput({
+		[MONTH]: "",
+		[YEAR]: "",
+	});
+	const [cardSecureCode, onChangeCardSecureCode] = useInput("");
+	const [cardPassword, onChangeCardPassword] = useInput("");
 
 	return (
 		<div className="root-container">
 			<div className="root">
-				{page === "list" && (
+				{page === LIST && (
 					<CardList
 						setPage={setPage}
-						cardInfo={cardInfo}
-						onChangeCardInfo={onChangeCardInfo}
+						cardName={cardName}
+						cardNumber={cardNumber}
+						cardOwner={cardOwner}
+						cardExpirationDate={cardExpirationDate}
 					/>
 				)}
-				{page === "add" && <CardAdd setPage={setPage} />}
-				{page === "done" && <CardDone setPage={setPage} />}
+				{page === ADD && (
+					<CardAdd
+						setPage={setPage}
+						cardName={cardName}
+						onChangeCardName={onChangeCardName}
+						cardNumber={cardNumber}
+						onChangeCardNumber={onChangeCardNumber}
+						cardOwner={cardOwner}
+						onChangeCardOwner={onChangeCardOwner}
+						cardExpirationDate={cardExpirationDate}
+						onChangeCardExpirationDate={onChangeCardExpirationDate}
+						cardSecureCode={cardSecureCode}
+						onChangeCardSecureCode={onChangeCardSecureCode}
+						cardPassword={cardPassword}
+						onChangeCardPassword={onChangeCardPassword}
+					/>
+				)}
+				{page === DONE && <CardDone setPage={setPage} />}
 			</div>
 		</div>
 	);

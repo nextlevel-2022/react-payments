@@ -2,28 +2,46 @@ import React from "react";
 import PropTypes from "prop-types";
 import * as S from "./style";
 import palette from "../../styles/global/palette";
+import {
+	FIRST,
+	FOURTH,
+	MONTH,
+	SECOND,
+	THIRD,
+	YEAR,
+} from "../../config/constant";
 
-const Card = ({ cardInfo, size, backgroundColor }) => {
-	const { cardName, cardNumber, cardOwner, cardExpirationDate } = cardInfo;
+const Card = props => {
+	const {
+		cardName,
+		cardNumber,
+		cardOwner,
+		cardExpirationDate,
+		size,
+		backgroundColor,
+	} = props;
 
 	return (
 		<S.Card size={size} backgroundColor={backgroundColor}>
 			<S.CardName>{cardName}</S.CardName>
 			<S.Chip />
-			<S.CardNumber>{cardNumber}</S.CardNumber>
-			<S.CardOwner>{cardOwner}</S.CardOwner>
-			<S.CardExpirationDate>{cardExpirationDate}</S.CardExpirationDate>
+			<S.CardNumber>
+				{`${cardNumber[FIRST]} - ${cardNumber[SECOND]} - ${cardNumber[THIRD]} - ${cardNumber[FOURTH]}`}
+			</S.CardNumber>
+			<S.CardOwner>{cardOwner || "NAME"}</S.CardOwner>
+			<S.CardExpirationDate>
+				{`${cardExpirationDate[MONTH] || "MM"}/
+				${cardExpirationDate[YEAR] || "YY"}`}
+			</S.CardExpirationDate>
 		</S.Card>
 	);
 };
 
 Card.propTypes = {
-	cardInfo: PropTypes.shape({
-		cardName: PropTypes.string.isRequired,
-		cardNumber: PropTypes.string.isRequired,
-		cardOwner: PropTypes.string.isRequired,
-		cardExpirationDate: PropTypes.string.isRequired,
-	}),
+	cardName: PropTypes.string.isRequired,
+	cardNumber: PropTypes.objectOf(PropTypes.string),
+	cardOwner: PropTypes.string.isRequired,
+	cardExpirationDate: PropTypes.objectOf(PropTypes.string),
 	size: PropTypes.string.isRequired,
 	backgroundColor: PropTypes.string,
 };

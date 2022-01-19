@@ -6,7 +6,10 @@ import CardButton from "../../components/CardButton";
 import { ADD } from "../../config/constant";
 import Card from "../../components/Card";
 
-const CardList = ({ setPage, cardInfo }) => {
+const CardList = props => {
+	const { cardName, cardNumber, cardOwner, cardExpirationDate, setPage } =
+		props;
+
 	const onClick = () => {
 		setPage(ADD);
 	};
@@ -15,7 +18,15 @@ const CardList = ({ setPage, cardInfo }) => {
 		<div className="app">
 			<h1 className="page-title">보유카드</h1>
 			<CardBox>
-				<Card cardInfo={cardInfo} />
+				<Card
+					size="small"
+					cardName={cardName}
+					cardNumber={cardNumber}
+					cardOwner={cardOwner}
+					cardExpirationDate={cardExpirationDate}
+				/>
+			</CardBox>
+			<CardBox>
 				<CardButton onClick={onClick} />
 			</CardBox>
 		</div>
@@ -27,16 +38,15 @@ const CardBox = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: 60px;
 `;
 
 CardList.propTypes = {
 	setPage: PropTypes.func.isRequired,
-	cardInfo: PropTypes.shape({
-		cardName: PropTypes.string.isRequired,
-		cardNumber: PropTypes.string.isRequired,
-		cardOwner: PropTypes.string.isRequired,
-		cardExpirationDate: PropTypes.string.isRequired,
-	}).isRequired,
+	cardName: PropTypes.string.isRequired,
+	cardNumber: PropTypes.objectOf(PropTypes.string),
+	cardOwner: PropTypes.string.isRequired,
+	cardExpirationDate: PropTypes.objectOf(PropTypes.string),
 };
 
 export default CardList;

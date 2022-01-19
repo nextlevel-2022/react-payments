@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Card = styled.div`
 	position: relative;
-	margin-top: 60px;
 
 	width: ${({ size }) => (size === "large" ? "290px" : "208px")};
 	height: ${({ size }) => (size === "large" ? "180px" : "130px")};
@@ -35,7 +34,7 @@ export const Chip = styled.div`
 export const CardNumber = styled.div`
 	position: absolute;
 	top: 78px;
-	left: 22px;
+	left: 14px;
 `;
 
 export const CardOwner = styled.div`

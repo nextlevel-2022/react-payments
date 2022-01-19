@@ -1,5 +1,5 @@
 import React from "react";
-import CardList from "./index";
+import CardInputForm from "./index";
 import {
 	FIRST,
 	FOURTH,
@@ -10,11 +10,11 @@ import {
 } from "../../config/constant";
 
 export default {
-	title: "pages/CardList",
-	component: CardList,
+	title: "components/CardInputForm",
+	component: CardInputForm,
 };
 
-const Template = args => <CardList {...args} />;
+const Template = args => <CardInputForm {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
