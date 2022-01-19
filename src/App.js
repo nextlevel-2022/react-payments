@@ -1,20 +1,21 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import CardList from './pages/CardList'
 // import logo from './logo.svg';
-// import './App.css';
+// import './app.css';
+// import '../styles/index.css';
+import Style from '../styles/index.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<CardList />} />
+        {/* <Route path="/add" component={AddCard} /> */}
+        {/* <Route path="/profile" component={ProfilePage} /> */}
+      </Routes>
+    </>
   );
 }
+
 export default App;

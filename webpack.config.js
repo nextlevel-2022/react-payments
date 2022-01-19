@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = ({ isDev }) => ({
   mode: isDev ? 'development' : 'production',
@@ -10,13 +11,24 @@ const config = ({ isDev }) => ({
     extensions: ['.js', '.jsx'],
   },
   entry: {
-    main: './src/index',
+    main: './src/index.js',
   },
   output: {
     path: path.join(__dirname, 'dist'),
-    publicPath: '/',
+    // publicPath: '/',
     filename: '[name].js',
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify('v0.1.0'),
+    }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+    }),
+    new ReactRefreshWebpackPlugin(),
+    new MiniCssExtractPlugin({ filename: 'app.css' }),
+  ],
   module: {
     rules: [
       {
@@ -39,31 +51,43 @@ const config = ({ isDev }) => ({
           plugins: [isDev && 'react-refresh/babel'].filter(Boolean),
         },
       },
+      {
+        test: /\.(sass|less|css)$/,
+        // use: [
+        //   {
+        //     loader: MiniCssExtractPlugin.loader,
+        //     options: {
+        //       // you can specify a publicPath here
+        //       // by default it uses publicPath in webpackOptions.output
+        //       publicPath: '../',
+        //     },
+        //   },
+        //   'css-loader',
+        // ],
+        use: ['style-loader', 'css-loader'],
+        // use: ['MiniCssExtractPlugin.loader', 'css-loader'],
+      },
+      // {
+      //   test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+      //   exclude: /node_modules/,
+      //   use: ['file-loader?name=[name].[ext]'], // ?name=[name].[ext] is only necessary to preserve the original file name
+      // },
     ],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      VERSION: JSON.stringify('v0.1.0'),
-    }),
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
-    new ReactRefreshWebpackPlugin(),
-  ],
-  devServer: {
-    // contentBase: path.join(__dirname, 'dist'),	// 빌드 결과물의 path
-    // publicPath: '/',				// 브라우저에서 접근하는 path. (기본값: '/')
-    port: 9000, 				// 개발서버 포트 (기본값: 8080)
-    historyApiFallback: true,			// 404 응답 시 index.html로 리다이렉트
-    open: true,
-    hot: true,
-    // overlay: true,				// 웹팩 빌드 에러를 브라우저 상에 출력
-    // stats: 'errors-only',			// 메세지 표시 수준 조절 (none, minimal, normal, verbose)
-    // proxy: {
-    //   '/api': 'http://localhost:8080',		// 프론트 단에서 CORS 에러 해결하는 방법
-    // },
-  },
+
+  // devServer: {
+  //   contentBase: path.join(__dirname, 'dist'),	// 빌드 결과물의 path
+  //   publicPath: '/',				// 브라우저에서 접근하는 path. (기본값: '/')
+  //   port: 9000, // 개발서버 포트 (기본값: 8080)
+  //   historyApiFallback: true, // 404 응답 시 index.html로 리다이렉트
+  //   open: true,
+  //   hot: true,
+  //   overlay: true,				// 웹팩 빌드 에러를 브라우저 상에 출력
+  //   stats: 'errors-only',			// 메세지 표시 수준 조절 (none, minimal, normal, verbose)
+  //   proxy: {
+  //     '/api': 'http://localhost:8080',		// 프론트 단에서 CORS 에러 해결하는 방법
+  //   },
+  // },
 });
 
 module.exports = (env, argv) => config({ isDev: argv.mode === 'development' });
