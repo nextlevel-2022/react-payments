@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const CardList = () => {
   return (
@@ -20,7 +21,7 @@ const CardList = () => {
                 <span className="card-text">1111 - 2222 - oooo - oooo</span>
               </div>
               <div className="card-bottom__info">
-                <span className="card-text">YUJO</span>
+                <span className="card-text">리액투</span>
                 <span className="card-text">12 / 23</span>
               </div>
             </div>
@@ -28,7 +29,9 @@ const CardList = () => {
         </div>
         <span className="card-nickname">법인카드</span>
         <div className="card-box">
-          <div className="empty-card">+</div>
+          <Link to="/add">
+            <div className="empty-card">+</div>
+          </Link>
         </div>
       </div>
     </>
