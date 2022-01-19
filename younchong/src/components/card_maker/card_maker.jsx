@@ -24,7 +24,7 @@ const CardMaker = () => {
 
   return (
     <div className={styles.container}>
-      {company === null && <CardCompanyModal setCompany={setCompany}/>}
+      {company === null && <CardCompanyModal setCompany={setCompany} />}
       <header className={styles.header}>
         <button className={styles.button} > <h3>&#60; 카드추가</h3> </button>
       </header>
@@ -34,7 +34,7 @@ const CardMaker = () => {
         </div>
         <form className={styles.form}>
           <div className={styles.numberInput}>
-            <CardNumberInput numbers={numbers} setNumber={setNumber} nextFocus={monthRef} setCompany={setCompany}/>
+            <CardNumberInput numbers={numbers} setNumber={setNumber} nextFocus={monthRef} company={company} setCompany={setCompany} />
           </div>
           <div className={styles.dateInput}>
             <CardDateInput date={date} setDate={setDate} monthRef={monthRef} nextFocus={nameRef}/>

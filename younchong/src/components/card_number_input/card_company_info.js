@@ -1,5 +1,10 @@
 export const CARD_COMPANY_INFO = [
   {
+    name: '미선택',
+    color: '#e5e5e5',
+    patterns: [],
+  },
+  {
     name: '신한카드',
     color: '#e24141',
     patterns: ['111111', '111100'],

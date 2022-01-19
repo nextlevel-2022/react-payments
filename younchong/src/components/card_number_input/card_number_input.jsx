@@ -1,11 +1,12 @@
 import React from 'react';
 import { useRef } from 'react';
+import { useImperativeHandle } from 'react';
 import { useState } from 'react';
 import { CARD_COMPANY_INFO } from './card_company_info';
 import styles from "./card_number_input.module.css";
 import Dash from './dash';
 
-const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany}) => {
+const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) => {
   const firstRef = useRef();
   const secondRef = useRef();
   const thirdRef = useRef();
@@ -23,12 +24,15 @@ const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany}) => {
       
       number.length === 4 && nextRef[id].current.focus();
     } 
-    const firstSixDigit = numbers["firstInput"] + numbers["secondInput"];
-    if (firstSixDigit.length === 6) {
-      const selectedCompany = CARD_COMPANY_INFO.filter(company => company.patterns.includes(firstSixDigit));
-      selectedCompany[0] ? setCompany(selectedCompany[0]) : setCompany(null); // modal로 전달하기
+    
+    const firstEightDigit = numbers["firstInput"] + numbers["secondInput"];
+    if (firstEightDigit.length === 8 && !company.name) {
+      const selectedCompany = CARD_COMPANY_INFO.filter(company => company.patterns.includes(firstEightDigit));
+      selectedCompany[0] ? setCompany(selectedCompany[0]) : setCompany(null);
+      thirdRef.current.blur();
     }
   }
+
 
   const nextRef = {
     "firstInput" : secondRef,

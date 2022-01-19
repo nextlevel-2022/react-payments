@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRef } from 'react';
 import { CARD_COMPANY_INFO } from '../card_number_input/card_company_info';
 import styles from "./card_company_modal.module.css";
 
@@ -11,14 +12,14 @@ const CardCompanyModal = ({setCompany}) => {
   } 
   return (
     <section className={styles.modal}>
-      <main className={styles.body}>
+      <main className={styles.body} >
         {companyInfo.map(company => {
           const background = {
             background : company.color
           }
           return (
             <li key={company.name} className={styles.list}>
-              <button className={styles.button} style={background} name={company.name} onClick={onClick}>
+              <button className={styles.button} style={background} name={company.name} onClick={onClick} >
               </button>
               <span className={styles.name}>{company.name}</span>
             </li>
