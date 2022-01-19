@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CardList = () => {
+  const history = useNavigate();
+
   return (
     <>
       <div className="app flex-column-center">
@@ -29,13 +32,13 @@ const CardList = () => {
         </div>
         <span className="card-nickname">법인카드</span>
         <div className="card-box">
-          <Link to="/add">
-            <div className="empty-card">+</div>
-          </Link>
+          <div className="empty-card" onClick={() => history('/add')}>
+            +
+          </div>
         </div>
       </div>
     </>
   );
-}
+};
 
-export default CardList
+export default CardList;
