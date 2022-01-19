@@ -10,9 +10,19 @@ const CardPreview = ({numbers, date, name, company}) => {
       return;
     }
   }
+  function getTitle (company) {
+    if (company) {
+      const name = company.name !== "미선택" ? company.name : "";
+      return name;
+    } else {
+      return ;
+    }
+  }
   return (
     <div className={styles.container} style={getTheme(company)} >
-      <header className={styles.cardTop}></header>
+      <header className={styles.cardTop}>
+        <span className={styles.title}>{getTitle(company)}</span>
+      </header>
       <section className={styles.cardMiddle}>
         <article className={styles.cardChip}></article>
           {Object.keys(numbers).map(key => {

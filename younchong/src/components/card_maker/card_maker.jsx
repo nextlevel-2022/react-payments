@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CardCompanyModal from '../card_company_modal/card_company_modal';
 import CardCvcInput from '../card_cvc_input/card_cvc_input';
 import CardDateInput from '../card_date_input/card_date_input';
@@ -20,13 +21,14 @@ const CardMaker = () => {
   const nameRef = useRef();
   const passwordRef =useRef();
   const nextBtnRef = useRef();
+  const navigate = useNavigate();
   // 다음 눌렀을 때 카드 추가 페이지로
 
   return (
     <div className={styles.container}>
       {company === null && <CardCompanyModal setCompany={setCompany} />}
       <header className={styles.header}>
-        <button className={styles.button} > <h3>&#60; 카드추가</h3> </button>
+        <button className={styles.button} onClick={() =>{navigate("/list")}} > <h3>&#60; 카드추가</h3> </button>
       </header>
       <section className={styles.main}>
         <div className={styles.preview}>
@@ -51,7 +53,7 @@ const CardMaker = () => {
         </form>
       </section>
       <footer className={styles.footer}>
-        <button ref={nextBtnRef} className={styles.button}> <h4>다음</h4> </button>
+        <button ref={nextBtnRef} className={styles.button} onClick={() =>{navigate("/add")}}> <h4>다음</h4> </button>
       </footer>
     </div>
   );

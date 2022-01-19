@@ -28,8 +28,12 @@ const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) =
     const firstEightDigit = numbers["firstInput"] + numbers["secondInput"];
     if (firstEightDigit.length === 8 && !company.name) {
       const selectedCompany = CARD_COMPANY_INFO.filter(company => company.patterns.includes(firstEightDigit));
-      selectedCompany[0] ? setCompany(selectedCompany[0]) : setCompany(null);
-      thirdRef.current.blur();
+      if (selectedCompany[0]) {
+        setCompany(selectedCompany[0])
+      } else {
+        setCompany(null);
+        thirdRef.current.blur();
+      }
     }
   }
 

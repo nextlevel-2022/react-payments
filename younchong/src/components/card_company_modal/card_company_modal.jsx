@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRef } from 'react';
 import { CARD_COMPANY_INFO } from '../card_number_input/card_company_info';
 import styles from "./card_company_modal.module.css";
 
