@@ -30,8 +30,8 @@ const CardDateInput = ({date, setDate, monthRef, nextFocus}) => {
     }
   }
   
-  function getSlash(condition) {
-    if (condition && condition.length === 2) {
+  function getSlash(value) {
+    if (value && value.length === 2) {
       return styles.visible
     }
   }

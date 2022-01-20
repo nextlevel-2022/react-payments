@@ -2,17 +2,16 @@ import React, { useRef } from 'react';
 import styles from './card_password_input.module.css';
 
 const CardPasswordInput = ({firstRef, password, setPassword, nextFocus}) => {
-  //input value 넣는 방식 refactoring 필요하다고 생각
   const secondRef = useRef();
   const nextRef = {
     "firstPassword" : secondRef,
     "secondPassword" : nextFocus,
   }
 
-  function onChange(e) {
+  const onChange = (e) => {
     let value = e.currentTarget.value;
     let id = e.currentTarget.id;
-    if (value.length <= 1) {
+    if (isFinite(value) && value.length <= 1) {
       setPassword(password => {
         const update = {...password};
         update[id] = value;

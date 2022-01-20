@@ -1,16 +1,22 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useRef } from 'react';
-import { useImperativeHandle } from 'react';
-import { useState } from 'react';
 import { CARD_COMPANY_INFO } from './card_company_info';
 import styles from "./card_number_input.module.css";
 import Dash from './dash';
 
 const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) => {
-  const firstRef = useRef();
-  const secondRef = useRef();
-  const thirdRef = useRef();
-  const fourthRef = useRef();
+  const firstInputRef = useRef();
+  const secondInputRef = useRef();
+  const thirdInputRef = useRef();
+  const fourthInputRef = useRef();
+
+  const nextRef = {
+    "firstInput" : secondInputRef,
+    "secondInput" : thirdInputRef,
+    "thirdInput" : fourthInputRef,
+    "fourthInput" : nextFocus
+  };
 
   const numberChecker = (e) => {
     const id = e.currentTarget.id;
@@ -25,6 +31,10 @@ const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) =
       number.length === 4 && nextRef[id].current.focus();
     } 
     
+  }
+
+  
+  useEffect(() => {
     const firstEightDigit = numbers["firstInput"] + numbers["secondInput"];
     if (firstEightDigit.length === 8 && !company.name) {
       const selectedCompany = CARD_COMPANY_INFO.filter(company => company.patterns.includes(firstEightDigit));
@@ -32,31 +42,23 @@ const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) =
         setCompany(selectedCompany[0])
       } else {
         setCompany(null);
-        thirdRef.current.blur();
+        thirdInputRef.current.blur();
       }
     }
-  }
-
-
-  const nextRef = {
-    "firstInput" : secondRef,
-    "secondInput" : thirdRef,
-    "thirdInput" : fourthRef,
-    "fourthInput" : nextFocus
-  };
+  },[numbers])
 
 
   return (
     <article className={styles.inputContainer}>
       <label className={styles.title}>카드 번호</label>
       <div className={styles.inputBox}>
-        <input  id="firstInput" type="text" className={styles.inputBasic} onChange={numberChecker}  value={[numbers["firstInput"]]} ref={firstRef}/>
+        <input  id="firstInput" type="text" className={styles.inputBasic} onChange={numberChecker}  value={[numbers["firstInput"]]} ref={firstInputRef}/>
         <Dash id="firstInput" numbers={numbers} />
-        <input  id="secondInput" type="text" className={styles.inputBasic} onChange={numberChecker} value={[numbers["secondInput"]]} ref={secondRef}/>
+        <input  id="secondInput" type="text" className={styles.inputBasic} onChange={numberChecker} value={[numbers["secondInput"]]} ref={secondInputRef}/>
         <Dash id="secondInput" numbers={numbers} />
-        <input id='thirdInput' type="password" className={styles.inputBasic} onChange={numberChecker} value={[numbers["thirdInput"]]} ref={thirdRef}/>
+        <input id='thirdInput' type="password" className={styles.inputBasic} onChange={numberChecker} value={[numbers["thirdInput"]]} ref={thirdInputRef}/>
         <Dash id="thirdInput" numbers={numbers} />
-        <input id='fourthInput' type="password" className={styles.inputBasic} onChange={numberChecker} value={[numbers["fourthInput"]]} ref={fourthRef}/>
+        <input id='fourthInput' type="password" className={styles.inputBasic} onChange={numberChecker} value={[numbers["fourthInput"]]} ref={fourthInputRef}/>
       </div>
     </article>
   );

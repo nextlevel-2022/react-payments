@@ -22,7 +22,6 @@ const CardMaker = () => {
   const passwordRef =useRef();
   const nextBtnRef = useRef();
   const navigate = useNavigate();
-  // 다음 눌렀을 때 카드 추가 페이지로
 
   return (
     <div className={styles.container}>
