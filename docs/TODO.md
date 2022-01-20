@@ -2,6 +2,33 @@
 
 ## TODO
 
+- 페이지
+
+  - [ ] List 페이지
+  - [ ] Add 페이지
+  - [ ] Alias 페이지
+
+- 컴포넌트
+
+  - [ ] Card 컴포넌트
+  - [ ] CardForm 컴포넌트
+  - [ ] Modal 컴포넌트
+
+- 그외
+  - [ ] 라우터 구현 (페이지 이동)
+
+## 작업순서
+
+- [ ] 기본 라우터 세팅(react-router-dom)
+  - [ ] 다음, 뒤로가기로 페이지 이동
+    - Add -> (modal) -> Alias -> List <-> Add
+- [ ] Add 페이지
+  - [ ] Card 컴포넌트
+  - [ ] CadrForm 컴포넌트
+  - [ ] Modal 컴포넌트
+- [ ] Alias 페이지
+- [ ] List 페이지
+
 ## 요구사항 리스트
 
 #### 카드 추가

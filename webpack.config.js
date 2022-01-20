@@ -14,10 +14,12 @@ module.exports = {
     port: 3000,
     // devserver 에서만 핫로딩 가능하게
     hot: true,
+    historyApiFallback: true,
   },
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
   module: {
     rules: [
