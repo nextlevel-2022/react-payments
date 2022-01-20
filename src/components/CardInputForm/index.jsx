@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import CardNumberInput from "./CardNumberInput";
+import CardExpirationDateInput from "./CardExpirationDateInput";
+import { FOURTH } from "../../config/constant";
 
 const CardInputForm = props => {
 	const {
@@ -24,8 +26,16 @@ const CardInputForm = props => {
 			<form>
 				<CardNumberInput
 					label="카드 번호"
+					width="327px"
 					cardNumber={cardNumber}
 					onChangeCardNumber={onChangeCardNumber}
+				/>
+				<CardExpirationDateInput
+					label="만료일"
+					width="138px"
+					startFocus={cardNumber[FOURTH].length === 4}
+					cardExpirationDate={cardExpirationDate}
+					onChangeCardExpirationDate={onChangeCardExpirationDate}
 				/>
 				{/* <label>
 					만료일

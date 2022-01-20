@@ -17,16 +17,6 @@ const GlobalStyle = createGlobalStyle`
    font-size: 16px;
   }
 
-  /* Remove Spinner */
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  input[type=number] {
-    -moz-appearance: textfield;
-  }
 
   .root-container {
     height: 100vh;

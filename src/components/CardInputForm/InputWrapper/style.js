@@ -20,9 +20,27 @@ export const InputContainer = styled.div`
 	width: ${({ width }) => width};
 	height: 45px;
 
-	& input {
+	& input,
+	& fieldset {
 		background-color: transparent;
 		font-size: 1.125rem;
+		text-align: center;
+
 		border: none;
+	}
+
+	& input:focus {
+		outline: none;
+	}
+
+	/* Remove Spinner */
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type="number"] {
+		-moz-appearance: textfield;
 	}
 `;

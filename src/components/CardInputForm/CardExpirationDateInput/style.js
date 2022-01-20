@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const LayoutWrapper = styled.fieldset`
+export const LayoutWrapper = styled.div`
 	& > input {
-		width: 44px;
+		width: 30px;
 	}
 `;
 

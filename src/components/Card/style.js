@@ -34,7 +34,7 @@ export const Chip = styled.div`
 export const CardNumber = styled.div`
 	position: absolute;
 	top: 78px;
-	left: 14px;
+	left: 25px;
 `;
 
 export const CardOwner = styled.div`

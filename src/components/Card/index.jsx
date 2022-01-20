@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 import * as S from "./style";
 import palette from "../../styles/global/palette";
 import {
@@ -21,12 +22,18 @@ const Card = props => {
 		backgroundColor,
 	} = props;
 
+	const changeToSecureCode = numbers => {
+		return "*".repeat(numbers.length);
+	};
+
 	return (
 		<S.Card size={size} backgroundColor={backgroundColor}>
 			<S.CardName>{cardName}</S.CardName>
 			<S.Chip />
 			<S.CardNumber>
-				{`${cardNumber[FIRST]} - ${cardNumber[SECOND]} - ${cardNumber[THIRD]} - ${cardNumber[FOURTH]}`}
+				{`${cardNumber[FIRST]}  ${cardNumber[SECOND]} 
+				 ${changeToSecureCode(cardNumber[THIRD])}  
+			   ${changeToSecureCode(cardNumber[FOURTH])}`}
 			</S.CardNumber>
 			<S.CardOwner>{cardOwner || "NAME"}</S.CardOwner>
 			<S.CardExpirationDate>
