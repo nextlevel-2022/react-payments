@@ -25,6 +25,9 @@ const AddCard = () => {
     e.target.closest('.input-container').nextElementSibling.querySelector('input').focus();
   };
 
+  const nameArray = ['cardSubNumber4', 'expireYear', 'cardName', 'secretCode'];
+
+
   const handleOnChange = (e) => {
     console.log(e.target)
     console.log(e.target.value)
@@ -40,6 +43,8 @@ const AddCard = () => {
     });
     console.log(inputs)
     console.log(e.target.value);
+
+    if(!nameArray.includes(e.target.name)) return
     if (e.target.maxLength === e.target.value.length) {
       moveNextFocus(e)
     }
@@ -89,6 +94,7 @@ const AddCard = () => {
             -
             <input className="input-basic" type="password" name="cardSubNumber4" maxLength="4" required />
           </div>
+          <p></p>
         </div>
         <div className="input-container">
           <span className="input-title">만료일</span>
