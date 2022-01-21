@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CardCompanyModal from '../card_company_modal/card_company_modal';
+import CardCompanyModal from '../../modal_page/card_company_modal/card_company_modal';
 import CardCvcInput from '../card_cvc_input/card_cvc_input';
 import CardDateInput from '../card_date_input/card_date_input';
 import CardNameInput from '../card_name_input/card_name_input';

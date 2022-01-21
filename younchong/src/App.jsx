@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CardMaker from './components/card_maker/card_maker';
+import CardMaker from './components/card_make_page/card_maker/card_maker';
 import CardList from './components/card_list_page/card_list';
 import CardAddPage from './components/card_add_page/card_add_page';
 
