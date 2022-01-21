@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 import TextButton from "../../components/TextButton";
-import { DONE, LIST } from "../../config/constant";
+import { DONE, LIST, SECOND } from "../../config/constant";
 import BackButton from "../../components/ BackButton";
 import Card from "../../components/Card";
 import CardInputForm from "../../components/CardInputForm";
@@ -24,7 +24,6 @@ const CardAdd = props => {
 		onChangeCardPassword,
 		setPage,
 	} = props;
-
 	const onBack = () => {
 		setPage(LIST);
 	};

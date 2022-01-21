@@ -26,17 +26,21 @@ const CardNumberInput = props => {
 			}
 			if (isFourDigits) {
 				onChangeCardNumber(e);
-				idx <= THIRD ? moveFocus(idx) : removeFocus(idx - 1);
+				controlFocue(idx);
 			}
 		}
 	};
 
-	const moveFocus = idx => {
-		refs[idx].current.focus();
-	};
+	const controlFocue = idx => {
+		const moveFocus = idx => {
+			refs[idx].current.focus();
+		};
 
-	const removeFocus = idx => {
-		refs[idx].current.blur();
+		const removeFocus = idx => {
+			refs[idx].current.blur();
+		};
+
+		idx <= THIRD ? moveFocus(idx) : removeFocus(idx - 1);
 	};
 
 	return (

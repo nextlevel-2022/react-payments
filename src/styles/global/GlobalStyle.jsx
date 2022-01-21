@@ -28,6 +28,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .root {
+    position: relative;
+    z-index: 1;
     background-color: #fff;
     width: 375px;
     min-width: 375px;

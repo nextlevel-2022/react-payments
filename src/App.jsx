@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import CardList from "./pages/CardList";
 import CardAdd from "./pages/CardAdd";
@@ -15,6 +15,7 @@ import {
 	MONTH,
 	YEAR,
 } from "./config/constant";
+import Modal from "./components/Modal";
 
 const App = () => {
 	const [page, setPage] = useState(LIST); // list -> add -> done
@@ -32,6 +33,15 @@ const App = () => {
 	});
 	const [cardSecureCode, onChangeCardSecureCode] = useInput("");
 	const [cardPassword, onChangeCardPassword] = useInput("");
+
+	const [isModalOn, setIsModalOn] = useState(false);
+
+	useEffect(() => {
+		const modalTrigger = cardNumber[SECOND].length === 4;
+		if (modalTrigger) {
+			setIsModalOn(true);
+		}
+	}, [cardNumber[SECOND]]);
 
 	return (
 		<div className="root-container">
@@ -63,6 +73,7 @@ const App = () => {
 					/>
 				)}
 				{page === DONE && <CardDone setPage={setPage} />}
+				{isModalOn && <Modal setIsModalOn={setIsModalOn}></Modal>}
 			</div>
 		</div>
 	);

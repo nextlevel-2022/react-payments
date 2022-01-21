@@ -9,4 +9,7 @@ export default {
 const Template = args => <InputWrapper {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+	width: "100px",
+	label: "label",
+};

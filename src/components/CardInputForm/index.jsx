@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import CardNumberInput from "./CardNumberInput";
@@ -37,11 +37,7 @@ const CardInputForm = props => {
 					cardExpirationDate={cardExpirationDate}
 					onChangeCardExpirationDate={onChangeCardExpirationDate}
 				/>
-				{/* <label>
-					만료일
-					<input type="text" name="cardExpirationDate"></input>
-				</label>
-				<label>
+				{/*
 					카드 소유자 이름(선택)
 					<input
 						type="text"
@@ -57,7 +53,8 @@ const CardInputForm = props => {
 				<label>
 					카드 비밀번호
 					<input type="password" name="cardPassword"></input>
-				</label> */}
+				</label>{" "}
+				*/}
 			</form>
 		</div>
 	);
