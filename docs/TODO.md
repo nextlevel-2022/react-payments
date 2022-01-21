@@ -19,8 +19,9 @@
 
 ## 작업순서
 
-- [ ] 기본 라우터 세팅(react-router-dom)
-  - [ ] 다음, 뒤로가기로 페이지 이동
+- [ ] eslint, prettier 적용하기
+- [x] 기본 라우터 세팅(react-router-dom)
+  - [x] 다음, 뒤로가기로 페이지 이동
     - Add -> (modal) -> Alias -> List <-> Add
 - [ ] Add 페이지
   - [ ] Card 컴포넌트
