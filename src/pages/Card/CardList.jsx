@@ -9,15 +9,15 @@ const CardList = props => {
 
 	const CardListData = [
 		{
-			ID: 1,
-			NAME: '예제이름',
-			CARD_NUMBER_1: '1111',
-			CARD_NUMBER_2: '2222',
-			CARD_NUMBER_3: 'oooo',
-			CARD_NUMBER_4: 'oooo',
-			EXPIRATION_DATE_YY: '12',
-			EXPIRATION_DATE_MM: '23',
-			CREDIT_CARD_COMPANY: '예제카드'
+			CARD_ID: 0,
+			NAME: '샘플이',
+			CARD_NUMBER_1: '1212',
+			CARD_NUMBER_2: '2323',
+			CARD_NUMBER_3: '3434',
+			CARD_NUMBER_4: '4545',
+			EXPIRATION_DATE_YY: '24',
+			EXPIRATION_DATE_MM: '12',
+			CREDIT_CARD_COMPANY: 1,
 		}
 	]
 	
@@ -30,8 +30,18 @@ const CardList = props => {
 					<div className="flex-center">
 						<h2 className="page-title mb-10">보유 카드</h2>
 					</div>
-					{CardListData.map((item) => <Card data={item} key={item.ID} company={props.company} />)}
-					{DATA_LIST.map((item) => <Card data={item} key={item.ID} company={props.company} />)}
+					{CardListData.map((item) => 
+						<>
+							<Card data={item} key={item.ID} company={props.company} /> 
+							<span className="card-nickname">법인카드</span>
+						</>
+					)}
+					{DATA_LIST.map((item) => 
+						<>
+							<Card data={item} key={item.ID} company={props.company} /> 
+							<span className="card-nickname">법인카드</span>
+						</>
+					)}
 					<div className="card-box">
 						<div className="empty-card" onClick={router}>+</div>
 					</div>

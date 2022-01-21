@@ -23,6 +23,29 @@
   color: #525252;
 }
 
+.input-title .tooltip {
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.input-title .tooltip .text {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 120%;
+  padding: 0.5rem;
+  width: 80px;
+  background-color: #2c3e50;
+  border-radius: .25rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.input-title .tooltip:hover .text {
+  display: block;
+}
+
 .input-basic {
   background-color: #ecebf1;
   height: 45px;

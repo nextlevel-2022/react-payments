@@ -66,7 +66,7 @@ const CardExpirationDateInput = props => {
 				/>
 			</div>
 
-			{ errorMessage && <p>{ERROR_MESSAGE.EXPIRATION_DATE}</p> }
+			{ errorMessage && <p className="error_message">{ERROR_MESSAGE.EXPIRATION_DATE}</p> }
 		</div>
   );
 }

@@ -1,6 +1,4 @@
-import React, { useRef, useState } from 'react';
-import { CARD_INPUT_LENGTH } from '../../constants/Data';
-import { ONLY_NUMBERS_CHECK, USER_NAME_CHECK, TEXT_GAP_CHECK } from '../../constants/Validator';
+import React from 'react';
 
 import CardNumberInput from './Input/CardNumberInput';
 import CardExpirationDateInput from './Input/CardExpirationDateInput';
@@ -16,6 +14,9 @@ const CardRegistrationForm = props => {
 			<CardUserNameInput setData={props.setData} data={props.data} inputRef={props.inputRef} />
 			<CardCVCInput setData={props.setData} data={props.data} inputRef={props.inputRef} />
 			<CardPasswordInput setData={props.setData} data={props.data} inputRef={props.inputRef} />
+			<div className="button-box">
+				<span className="button-text" onClick={props.router}>다음</span>
+			</div>
 		</>
   );
 }

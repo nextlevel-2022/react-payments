@@ -18,6 +18,7 @@ input {
 }
 
 .root {
+  overflow: auto;
   background-color: #fff;
   width: 375px;
   min-width: 375px;
@@ -39,4 +40,11 @@ input {
   align-items: center;
 
   color: #383838;
+}
+
+.error_message {
+  margin: 0.5rem 0;
+  color: #d24e48;
+  font-size: .875rem;
+  font-weight: bold;
 }

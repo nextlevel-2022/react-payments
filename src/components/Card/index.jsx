@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 
 const Card = props => {
+	const companyType = props.data.CREDIT_CARD_COMPANY !== '' || props.data.CREDIT_CARD_COMPANY !== undefined;
 	let companyName = '';
-	let companyColor = '';
+	let companyStyle= {
+		background: '',
+		color: ''
+	};
 
 	const firstSecurityInputArr = props.data.CARD_NUMBER_3.split("").fill('*');
 	const secondSecurityInputArr = props.data.CARD_NUMBER_4.split("").fill('*');
@@ -12,19 +16,23 @@ const Card = props => {
 	props.company.map(item => {
 		if ( props.data.CREDIT_CARD_COMPANY === item.CODE ) {
 			companyName = item.COMPANY;
-			companyColor = item.COLOR;
+			companyStyle.background = item.STYLE.BACKGROUND;
+			companyStyle.color = item.STYLE.COLOR;
 		}
 	});
+
+	const cardStyle = {
+		background: companyType && companyStyle.background,
+		color: companyType && companyStyle.color
+	}
 
 	return (
 		<>
 			<div className="card-box">
-				<div className="empty-card">
+				<div className="empty-card" style={cardStyle}>
 					<div className="card-top">
 						<span className="card-text">
-							{ props.data.CREDIT_CARD_COMPANY === '' || props.data.CREDIT_CARD_COMPANY === undefined ? 
-								'' : companyName
-							}
+							{ companyType && companyName }
 						</span>
 					</div>
 					<div className="card-middle">
@@ -52,12 +60,12 @@ const Card = props => {
 						<div className="card-bottom__info">
 							<span className="card-text">
 								{ props.data.NAME === '' || props.data.NAME === undefined ? 
-									'NAME' : props.data.NAME
+									'' : props.data.NAME
 								}
 								</span>
 							<span className="card-text">
 								{ props.data.EXPIRATION_DATE_MM === '' || props.data.EXPIRATION_DATE_MM === undefined ? 
-									'MM' : props.data.EXPIRATION_DATE_MM
+									'' : props.data.EXPIRATION_DATE_MM
 								}
 								{ props.data.EXPIRATION_DATE_YY === '' || props.data.EXPIRATION_DATE_YY === undefined ? 
 									'' : ` / ${props.data.EXPIRATION_DATE_YY}`
@@ -67,7 +75,6 @@ const Card = props => {
 					</div>
 				</div>
 			</div>
-			<span className="card-nickname">법인카드</span>
 		</>
   );
 }

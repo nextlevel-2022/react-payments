@@ -19,12 +19,9 @@ const CardRegistration = props => {
 			<h2>카드 추가</h2>
 			<div className="root">
 				<div className="app">
-					<h2 className="page-title"><span onClick={back} className='mr-8'>&lt;</span> 카드 추가</h2>
+					<h2 className="page-title"><span onClick={back} className="mr-8">&lt;</span> 카드 추가</h2>
 					<Card data={data} company={props.company} />
-					<CardRegistrationForm data={data} setData={setData} inputRef={inputRef} />
-					<div className="button-box">
-						<span className="button-text" onClick={router}>다음</span>
-					</div>
+					<CardRegistrationForm data={data} setData={setData} inputRef={inputRef} router={router}/>
 				</div>
 			</div>
 		</>
