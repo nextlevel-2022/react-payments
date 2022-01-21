@@ -36,15 +36,6 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 15px;
   }
 
-  .page-title {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 22px;
-    display: flex;
-    align-items: center;
-    color: #383838;
-  }
-
   .app {
     height: 100%;
     padding: 16px 28px;

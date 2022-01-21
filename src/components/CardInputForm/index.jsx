@@ -5,6 +5,7 @@ import * as S from "./style";
 import CardNumberInput from "./CardNumberInput";
 import CardExpirationDateInput from "./CardExpirationDateInput";
 import { FOURTH } from "../../config/constant";
+import CardOwnerInput from "./CardOwnerInput";
 
 const CardInputForm = props => {
 	const {
@@ -38,24 +39,20 @@ const CardInputForm = props => {
 					cardExpirationDate={cardExpirationDate}
 					onChangeCardExpirationDate={onChangeCardExpirationDate}
 				/>
-				{/*
-					카드 소유자 이름(선택)
-					<input
-						type="text"
-						name="cardOwner"
-						value={cardOwner}
-						onChange={onChangeCardOwner}
-					></input>
-				</label>
-				<label>
+				<CardOwnerInput
+					label="카드 소유자 이름 (선택)"
+					width="318px"
+					cardOwner={cardOwner}
+					onChangeCardOwner={onChangeCardOwner}
+				/>
+				{/* <label>
 					보안코드(CVC/CVV)
 					<input type="text" name="cardSecureCode"></input>
 				</label>
 				<label>
 					카드 비밀번호
 					<input type="password" name="cardPassword"></input>
-				</label>{" "}
-				*/}
+				</label> */}
 			</S.Form>
 		</div>
 	);

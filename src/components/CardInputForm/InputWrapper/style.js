@@ -5,7 +5,18 @@ export const InputWrapper = styled.div`
 	flex-direction: column;
 `;
 
+export const LabelContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
+
 export const Label = styled.label`
+	color: #525252;
+	font-size: 0.75rem;
+`;
+
+export const Counter = styled.div`
+	color: #525252;
 	font-size: 0.75rem;
 `;
 

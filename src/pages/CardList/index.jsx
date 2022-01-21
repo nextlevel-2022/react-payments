@@ -16,7 +16,9 @@ const CardList = props => {
 
 	return (
 		<div className="app">
-			<h1 className="page-title">보유카드</h1>
+			<StyledHeader>
+				<h1 className="page-title">보유카드</h1>
+			</StyledHeader>
 			<CardBox>
 				<Card
 					size="small"
@@ -32,6 +34,16 @@ const CardList = props => {
 		</div>
 	);
 };
+
+const StyledHeader = styled.header`
+	display: flex;
+	padding: 10px 5px;
+	font-size: 16px;
+
+	h1 {
+		padding-left: 15px;
+	}
+`;
 
 const CardBox = styled.div`
 	display: flex;
