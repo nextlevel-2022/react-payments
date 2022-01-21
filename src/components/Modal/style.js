@@ -12,6 +12,9 @@ export const Background = styled.div`
 `;
 
 export const Modal = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -20,4 +23,8 @@ export const Modal = styled.div`
 	z-index: 100;
 	border-radius: 15px;
 	background-color: #fdfdfd;
+
+	ul {
+		list-style-type: none;
+	}
 `;

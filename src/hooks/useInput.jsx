@@ -14,7 +14,7 @@ const useInput = initialForm => {
 		console.log(form);
 	};
 
-	return [form, onChange];
+	return [form, onChange, setForm];
 };
 
 export default useInput;

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 
+import * as S from "./style";
 import TextButton from "../../components/TextButton";
 import { DONE, LIST, SECOND } from "../../config/constant";
 import BackButton from "../../components/ BackButton";
 import Card from "../../components/Card";
 import CardInputForm from "../../components/CardInputForm";
+import palette from "../../styles/global/palette";
+import Modal from "../../components/Modal";
+import CardCompanyList from "../../components/CardCompanyList";
 
 const CardAdd = props => {
 	const {
@@ -22,8 +25,19 @@ const CardAdd = props => {
 		onChangeCardExpirationDate,
 		onChangeCardSecureCode,
 		onChangeCardPassword,
+		setCardName,
 		setPage,
 	} = props;
+
+	const [isModalOn, setIsModalOn] = useState(false);
+
+	useEffect(() => {
+		const modalTrigger = cardNumber[SECOND].length === 4;
+		if (modalTrigger) {
+			setIsModalOn(true);
+		}
+	}, [cardNumber[SECOND]]);
+
 	const onBack = () => {
 		setPage(LIST);
 	};
@@ -34,19 +48,20 @@ const CardAdd = props => {
 
 	return (
 		<div className="app">
-			<StyledHeader>
+			<S.Header>
 				<BackButton onClick={onBack} />
 				<h1>카드 추가</h1>
-			</StyledHeader>
-			<CardBox>
+			</S.Header>
+			<S.CardBox>
 				<Card
 					size="small"
+					backgroundColor={palette[cardName]}
 					cardName={cardName}
 					cardNumber={cardNumber}
 					cardOwner={cardOwner}
 					cardExpirationDate={cardExpirationDate}
 				/>
-			</CardBox>
+			</S.CardBox>
 			<CardInputForm
 				cardName={cardName}
 				onChangeCardName={onChangeCardName}
@@ -62,25 +77,17 @@ const CardAdd = props => {
 				onChangeCardPassword={onChangeCardPassword}
 			/>
 			<TextButton content="다음" onClick={onNext} />
+			{isModalOn && (
+				<Modal setIsModalOn={setIsModalOn}>
+					<CardCompanyList
+						setIsModalOn={setIsModalOn}
+						setCardName={setCardName}
+					/>
+				</Modal>
+			)}
 		</div>
 	);
 };
-
-const StyledHeader = styled.header`
-	display: flex;
-	padding: 10px 5px;
-
-	h1 {
-		padding-left: 15px;
-	}
-`;
-
-const CardBox = styled.div`
-	display: felx;
-	justify-content: center;
-	align-items: center;
-	margin: 20px 0;
-`;
 
 CardAdd.propTypes = {
 	cardName: PropTypes.string.isRequired,
@@ -92,6 +99,7 @@ CardAdd.propTypes = {
 	onChangeCardOwner: PropTypes.func.isRequired,
 	onChangeCardExpirationDate: PropTypes.func.isRequired,
 	setPage: PropTypes.func.isRequired,
+	setCardName: PropTypes.func.isRequired,
 };
 
 export default CardAdd;

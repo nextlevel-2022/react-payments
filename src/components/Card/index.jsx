@@ -28,7 +28,7 @@ const Card = props => {
 
 	return (
 		<S.Card size={size} backgroundColor={backgroundColor}>
-			<S.CardName>{cardName}</S.CardName>
+			<S.CardName>{cardName && `${cardName} 카드`}</S.CardName>
 			<S.Chip />
 			<S.CardNumber>
 				{`${cardNumber[FIRST]}  ${cardNumber[SECOND]} 

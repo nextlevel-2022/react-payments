@@ -24,7 +24,7 @@ const CardExpirationDateInput = props => {
 	}, [startFocus]);
 
 	if (cardExpirationDate[MONTH].length === 2) {
-		yearRef.current.focus();
+		// yearRef.current.focus();
 	}
 
 	return (

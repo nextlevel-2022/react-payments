@@ -6,13 +6,14 @@ import * as S from "./style";
 const Modal = props => {
 	const { children, setIsModalOn } = props;
 
-	const onClose = () => {
+	const onClose = e => {
+		if (e.target !== e.currentTarget) return;
 		setIsModalOn(false);
 	};
 
 	return (
 		<S.Background onClick={onClose}>
-			<S.Modal> {children}</S.Modal>
+			<S.Modal>{children}</S.Modal>
 		</S.Background>
 	);
 };

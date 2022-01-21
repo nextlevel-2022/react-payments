@@ -14,20 +14,18 @@ const CardNumberInput = props => {
 	const fourthRef = useRef(null);
 	const refs = [firstRef, secondRef, thirdRef, fourthRef];
 
+	// ToDo: input의 type="password"일 때 숫자 유효성 검사
 	const NumberHandler = e => {
 		const { name: idx } = e.target;
-		const isNumber = parseInt(e.target.value, 10);
 		const isLessFourDigits = e.target.value.length < 4;
 		const isFourDigits = e.target.value.length === 4;
 
-		if (isNumber) {
-			if (isLessFourDigits) {
-				onChangeCardNumber(e);
-			}
-			if (isFourDigits) {
-				onChangeCardNumber(e);
-				controlFocue(idx);
-			}
+		if (isLessFourDigits) {
+			onChangeCardNumber(e);
+		}
+		if (isFourDigits) {
+			onChangeCardNumber(e);
+			controlFocue(idx);
 		}
 	};
 
