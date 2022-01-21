@@ -6,16 +6,15 @@ import CardNumberInput from "./CardNumberInput";
 import CardExpirationDateInput from "./CardExpirationDateInput";
 import { FOURTH } from "../../config/constant";
 import CardOwnerInput from "./CardOwnerInput";
+import CardSecureCodeInput from "./ CardSecureCodeInput";
 
 const CardInputForm = props => {
 	const {
-		cardName,
 		cardNumber,
 		cardOwner,
 		cardExpirationDate,
 		cardSecureCode,
 		cardPassword,
-		onChangeCardName,
 		onChangeCardNumber,
 		onChangeCardOwner,
 		onChangeCardExpirationDate,
@@ -45,11 +44,13 @@ const CardInputForm = props => {
 					cardOwner={cardOwner}
 					onChangeCardOwner={onChangeCardOwner}
 				/>
-				{/* <label>
-					보안코드(CVC/CVV)
-					<input type="text" name="cardSecureCode"></input>
-				</label>
-				<label>
+				<CardSecureCodeInput
+					label="보안 코드(CCV/CVV)"
+					width="84px"
+					cardSecureCode={cardSecureCode}
+					onChangeCardSecureCode={onChangeCardSecureCode}
+				/>
+				{/* 
 					카드 비밀번호
 					<input type="password" name="cardPassword"></input>
 				</label> */}

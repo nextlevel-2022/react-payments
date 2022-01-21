@@ -63,8 +63,6 @@ const CardAdd = props => {
 				/>
 			</S.CardBox>
 			<CardInputForm
-				cardName={cardName}
-				onChangeCardName={onChangeCardName}
 				cardNumber={cardNumber}
 				onChangeCardNumber={onChangeCardNumber}
 				cardOwner={cardOwner}
