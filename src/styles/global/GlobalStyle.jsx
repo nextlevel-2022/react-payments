@@ -29,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
 
   .root {
     position: relative;
-    z-index: 1;
     background-color: #fff;
     width: 375px;
     min-width: 375px;
@@ -48,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
   .app {
     height: 100%;
-    padding: 16px 24px;
+    padding: 16px 28px;
   }
 `;
 

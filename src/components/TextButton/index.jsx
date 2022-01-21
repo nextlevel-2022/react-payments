@@ -1,23 +1,31 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
-const Button = ({ content, onClick }) => {
+const Button = ({ content, onClick, color }) => {
 	return (
 		<div className="button-box">
-			<button className="button-text" type="button" onClick={onClick}>
+			<StyledButton
+				className="button-text"
+				type="button"
+				color={color}
+				onClick={onClick}
+			>
 				{content}
-			</button>
+			</StyledButton>
 		</div>
 	);
 };
 
-Button.propTypes = {
-	content: PropTypes.string,
-	onClick: PropTypes.func.isRequired,
-};
+const StyledButton = styled.button`
+	font-size: 0.875rem;
+	font-weight: bold;
+	color: ${({ color }) => color};
+`;
 
-Button.defaultProps = {
-	content: "Button",
+Button.propTypes = {
+	content: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired,
 };
 
 export default Button;

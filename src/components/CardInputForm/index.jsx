@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
+import * as S from "./style";
 import CardNumberInput from "./CardNumberInput";
 import CardExpirationDateInput from "./CardExpirationDateInput";
 import { FOURTH } from "../../config/constant";
@@ -23,10 +24,10 @@ const CardInputForm = props => {
 
 	return (
 		<div>
-			<form>
+			<S.Form>
 				<CardNumberInput
 					label="카드 번호"
-					width="327px"
+					width="318px"
 					cardNumber={cardNumber}
 					onChangeCardNumber={onChangeCardNumber}
 				/>
@@ -55,7 +56,7 @@ const CardInputForm = props => {
 					<input type="password" name="cardPassword"></input>
 				</label>{" "}
 				*/}
-			</form>
+			</S.Form>
 		</div>
 	);
 };

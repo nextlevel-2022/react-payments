@@ -76,7 +76,7 @@ const CardAdd = props => {
 				cardPassword={cardPassword}
 				onChangeCardPassword={onChangeCardPassword}
 			/>
-			<TextButton content="다음" onClick={onNext} />
+			<TextButton content="다음" onClick={onNext} color="#04C09E" />
 			{isModalOn && (
 				<Modal setIsModalOn={setIsModalOn}>
 					<CardCompanyList

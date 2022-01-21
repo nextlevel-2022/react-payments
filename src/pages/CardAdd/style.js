@@ -10,7 +10,7 @@ export const Header = styled.header`
 `;
 
 export const CardBox = styled.div`
-	display: felx;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 20px 0;
