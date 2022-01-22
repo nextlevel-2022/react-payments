@@ -6,7 +6,8 @@ import CardNumberInput from "./CardNumberInput";
 import CardExpirationDateInput from "./CardExpirationDateInput";
 import { FOURTH } from "../../config/constant";
 import CardOwnerInput from "./CardOwnerInput";
-import CardSecureCodeInput from "./ CardSecureCodeInput";
+import CardSecureCodeInput from "./CardSecureCodeInput";
+import CardPasswordInput from "./CardPasswordInput";
 
 const CardInputForm = props => {
 	const {
@@ -27,13 +28,11 @@ const CardInputForm = props => {
 			<S.Form>
 				<CardNumberInput
 					label="카드 번호"
-					width="318px"
 					cardNumber={cardNumber}
 					onChangeCardNumber={onChangeCardNumber}
 				/>
 				<CardExpirationDateInput
 					label="만료일"
-					width="138px"
 					startFocus={cardNumber[FOURTH].length === 4}
 					cardExpirationDate={cardExpirationDate}
 					onChangeCardExpirationDate={onChangeCardExpirationDate}
@@ -46,25 +45,23 @@ const CardInputForm = props => {
 				/>
 				<CardSecureCodeInput
 					label="보안 코드(CCV/CVV)"
-					width="84px"
 					cardSecureCode={cardSecureCode}
 					onChangeCardSecureCode={onChangeCardSecureCode}
 				/>
-				{/* 
-					카드 비밀번호
-					<input type="password" name="cardPassword"></input>
-				</label> */}
+				<CardPasswordInput
+					label="카드 비밀번호"
+					cardPassword={cardPassword}
+					onChangeCardPassword={onChangeCardPassword}
+				/>
 			</S.Form>
 		</div>
 	);
 };
 
 CardInputForm.propTypes = {
-	cardName: PropTypes.string.isRequired,
 	cardNumber: PropTypes.objectOf(PropTypes.string),
 	cardOwner: PropTypes.string.isRequired,
 	cardExpirationDate: PropTypes.objectOf(PropTypes.string),
-	onChangeCardName: PropTypes.func.isRequired,
 	onChangeCardNumber: PropTypes.func.isRequired,
 	onChangeCardOwner: PropTypes.func.isRequired,
 	onChangeCardExpirationDate: PropTypes.func.isRequired,

@@ -6,7 +6,7 @@ import QuestionMark from "../../../assets/question-circle-regular.svg";
 import InputWrapper from "../InputWrapper";
 
 const CardSecureCodeInput = props => {
-	const { label, width, cardSecureCode, onChangeCardSecureCode } = props;
+	const { label, cardSecureCode, onChangeCardSecureCode } = props;
 
 	const onToggle = e => {
 		e.preventDefault();
@@ -14,7 +14,7 @@ const CardSecureCodeInput = props => {
 	};
 
 	return (
-		<InputWrapper label={label} width={width}>
+		<InputWrapper label={label}>
 			<S.LayoutWrapper>
 				<S.Input
 					type="password"
@@ -31,7 +31,6 @@ const CardSecureCodeInput = props => {
 
 CardSecureCodeInput.propTypes = {
 	label: PropTypes.string.isRequired,
-	width: PropTypes.string.isRequired,
 	cardSecureCode: PropTypes.string.isRequired,
 	onChangeCardSecureCode: PropTypes.func.isRequired,
 };

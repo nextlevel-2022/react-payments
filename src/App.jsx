@@ -31,7 +31,10 @@ const App = () => {
 		[YEAR]: "",
 	});
 	const [cardSecureCode, onChangeCardSecureCode] = useInput("");
-	const [cardPassword, onChangeCardPassword] = useInput("");
+	const [cardPassword, onChangeCardPassword] = useInput({
+		[FIRST]: "",
+		[SECOND]: "",
+	});
 
 	return (
 		<div className="root-container">

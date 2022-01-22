@@ -12,4 +12,5 @@ export const Default = Template.bind({});
 Default.args = {
 	width: "318px",
 	label: "카드 소유자 이름 (선택)",
+	cardOwner: "",
 };

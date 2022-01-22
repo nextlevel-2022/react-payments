@@ -15,3 +15,8 @@ export const CardBox = styled.div`
 	align-items: center;
 	margin: 20px 0;
 `;
+
+export const ButtonBox = styled.div`
+	display: flex;
+	justify-content: end;
+`;

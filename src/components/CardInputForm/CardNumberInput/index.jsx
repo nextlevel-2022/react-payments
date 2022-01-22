@@ -6,7 +6,7 @@ import InputWrapper from "../InputWrapper";
 import * as S from "./style";
 
 const CardNumberInput = props => {
-	const { width, label, cardNumber, onChangeCardNumber } = props;
+	const { label, cardNumber, onChangeCardNumber } = props;
 
 	const firstRef = useRef(null);
 	const secondRef = useRef(null);
@@ -42,9 +42,9 @@ const CardNumberInput = props => {
 	};
 
 	return (
-		<InputWrapper label={label} width={width}>
+		<InputWrapper label={label}>
 			<S.LayoutWrapper>
-				<input
+				<S.Input
 					type="number"
 					min="0"
 					max="9999"
@@ -54,7 +54,7 @@ const CardNumberInput = props => {
 					ref={firstRef}
 				/>
 				<S.Divider>-</S.Divider>
-				<input
+				<S.Input
 					type="number"
 					min="0"
 					max="9999"
@@ -64,7 +64,7 @@ const CardNumberInput = props => {
 					ref={secondRef}
 				/>
 				<S.Divider>-</S.Divider>
-				<input
+				<S.Input
 					type="password"
 					min="0"
 					max="9999"
@@ -74,7 +74,7 @@ const CardNumberInput = props => {
 					ref={thirdRef}
 				/>
 				<S.Divider>-</S.Divider>
-				<input
+				<S.Input
 					type="password"
 					min="0"
 					max="9999"

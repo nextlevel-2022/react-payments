@@ -6,13 +6,8 @@ import { MONTH, YEAR } from "../../../config/constant";
 import * as S from "./style";
 
 const CardExpirationDateInput = props => {
-	const {
-		width,
-		label,
-		cardExpirationDate,
-		onChangeCardExpirationDate,
-		startFocus,
-	} = props;
+	const { label, cardExpirationDate, onChangeCardExpirationDate, startFocus } =
+		props;
 
 	const monthRef = useRef(null);
 	const yearRef = useRef(null);
@@ -28,9 +23,9 @@ const CardExpirationDateInput = props => {
 	}
 
 	return (
-		<InputWrapper label={label} width={width}>
+		<InputWrapper label={label}>
 			<S.LayoutWrapper>
-				<input
+				<S.Input
 					type="number"
 					placeholder="MM"
 					name={MONTH}
@@ -39,7 +34,7 @@ const CardExpirationDateInput = props => {
 					ref={monthRef}
 				/>
 				<S.Divider>/</S.Divider>
-				<input
+				<S.Input
 					type="number"
 					placeholder="YY"
 					name={YEAR}
@@ -53,7 +48,6 @@ const CardExpirationDateInput = props => {
 };
 
 CardExpirationDateInput.propTypes = {
-	width: PropTypes.string.isRequired,
 	label: PropTypes.string.isRequired,
 	cardExpirationDate: PropTypes.objectOf(PropTypes.string).isRequired,
 	onChangeCardExpirationDate: PropTypes.func.isRequired,
