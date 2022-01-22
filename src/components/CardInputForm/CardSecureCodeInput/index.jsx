@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import * as S from "./style";
 import QuestionMark from "../../../assets/question-circle-regular.svg";
 import InputWrapper from "../InputWrapper";
+import ToolTip from "../../ToolTip";
 
 const CardSecureCodeInput = props => {
 	const { label, cardSecureCode, onChangeCardSecureCode } = props;
+	const [isToolTipOn, setIsToolTipOn] = useState(false);
+
+	const onChangeToolTip = () => {
+		setIsToolTipOn(!isToolTipOn);
+	};
 
 	const checkNumber = e => {
 		const { value } = e.target;
@@ -21,11 +27,6 @@ const CardSecureCodeInput = props => {
 		}
 	};
 
-	const onToggle = e => {
-		e.preventDefault();
-		console.log("clicked");
-	};
-
 	return (
 		<InputWrapper label={label}>
 			<S.LayoutWrapper>
@@ -35,9 +36,13 @@ const CardSecureCodeInput = props => {
 					value={cardSecureCode}
 					onChange={e => checkNumber(e)}
 				/>
-				<S.Button>
+				<S.SVGWrapper
+					onMouseEnter={onChangeToolTip}
+					onMouseLeave={onChangeToolTip}
+				>
 					<QuestionMark width="25px" height="25px" fill="#969696" />
-				</S.Button>
+					{isToolTipOn && <ToolTip />}
+				</S.SVGWrapper>
 			</S.LayoutWrapper>
 		</InputWrapper>
 	);

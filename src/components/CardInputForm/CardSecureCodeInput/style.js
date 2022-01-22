@@ -10,7 +10,8 @@ export const Input = styled(DefalutStyledInput)`
 	width: 80px;
 `;
 
-export const Button = styled.button`
+export const SVGWrapper = styled.div`
+	cursor: pointer;
 	position: absolute;
 	left: 120px;
 `;
