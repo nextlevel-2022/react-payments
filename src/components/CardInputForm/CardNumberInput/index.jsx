@@ -15,11 +15,12 @@ const CardNumberInput = props => {
 	const refs = [firstRef, secondRef, thirdRef, fourthRef];
 
 	// ToDo: input의 type="password"일 때 숫자 유효성 검사
-	const NumberHandler = e => {
-		const { name: idx } = e.target;
+	const checkNumber = e => {
+		const { name: idx, value } = e.target;
 		const isLessFourDigits = e.target.value.length < 4;
 		const isFourDigits = e.target.value.length === 4;
 
+		if (isNaN(value)) return;
 		if (isLessFourDigits) {
 			onChangeCardNumber(e);
 		}
@@ -50,7 +51,8 @@ const CardNumberInput = props => {
 					max="9999"
 					name={FIRST}
 					value={cardNumber[FIRST]}
-					onChange={e => NumberHandler(e)}
+					onChange={e => checkNumber(e)}
+					autoFocus
 					ref={firstRef}
 				/>
 				<S.Divider>-</S.Divider>
@@ -60,7 +62,7 @@ const CardNumberInput = props => {
 					max="9999"
 					name={SECOND}
 					value={cardNumber[SECOND]}
-					onChange={e => NumberHandler(e)}
+					onChange={e => checkNumber(e)}
 					ref={secondRef}
 				/>
 				<S.Divider>-</S.Divider>
@@ -70,7 +72,7 @@ const CardNumberInput = props => {
 					max="9999"
 					name={THIRD}
 					value={cardNumber[THIRD]}
-					onChange={e => NumberHandler(e)}
+					onChange={e => checkNumber(e)}
 					ref={thirdRef}
 				/>
 				<S.Divider>-</S.Divider>
@@ -80,7 +82,7 @@ const CardNumberInput = props => {
 					max="9999"
 					name={FOURTH}
 					value={cardNumber[FOURTH]}
-					onChange={e => NumberHandler(e)}
+					onChange={e => checkNumber(e)}
 					ref={fourthRef}
 				/>
 			</S.LayoutWrapper>

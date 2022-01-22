@@ -37,8 +37,9 @@ const Card = props => {
 			</S.CardNumber>
 			<S.CardOwner>{cardOwner || "NAME"}</S.CardOwner>
 			<S.CardExpirationDate>
-				{`${cardExpirationDate[MONTH] || "MM"}/
-				${cardExpirationDate[YEAR] || "YY"}`}
+				{`${cardExpirationDate[MONTH] || "MM"}/${
+					cardExpirationDate[YEAR] || "YY"
+				}`}
 			</S.CardExpirationDate>
 		</S.Card>
 	);

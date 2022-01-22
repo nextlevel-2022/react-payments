@@ -12,15 +12,28 @@ const CardExpirationDateInput = props => {
 	const monthRef = useRef(null);
 	const yearRef = useRef(null);
 
-	useEffect(() => {
-		if (startFocus) {
-			monthRef.current.focus();
-		}
-	}, [startFocus]);
+	const checkDateInput = e => {
+		const { name, value, min, max } = e.target;
+		const isLessTwoDigits = value.length < 2;
+		const isVaildMonth = value >= min && value <= max;
+		const isVaildYear = value >= min && value <= max;
 
-	if (cardExpirationDate[MONTH].length === 2) {
-		// yearRef.current.focus();
-	}
+		if (name === MONTH) {
+			if (isLessTwoDigits) {
+				onChangeCardExpirationDate(e);
+			} else if (isVaildMonth) {
+				onChangeCardExpirationDate(e);
+			}
+		}
+
+		if (name === YEAR) {
+			if (isLessTwoDigits) {
+				onChangeCardExpirationDate(e);
+			} else if (isVaildYear) {
+				onChangeCardExpirationDate(e);
+			}
+		}
+	};
 
 	return (
 		<InputWrapper label={label}>
@@ -29,8 +42,10 @@ const CardExpirationDateInput = props => {
 					type="number"
 					placeholder="MM"
 					name={MONTH}
+					min={1}
+					max={12}
 					value={cardExpirationDate[MONTH]}
-					onChange={onChangeCardExpirationDate}
+					onChange={e => checkDateInput(e)}
 					ref={monthRef}
 				/>
 				<S.Divider>/</S.Divider>
@@ -38,8 +53,10 @@ const CardExpirationDateInput = props => {
 					type="number"
 					placeholder="YY"
 					name={YEAR}
+					min={1}
+					max={31}
 					value={cardExpirationDate[YEAR]}
-					onChange={onChangeCardExpirationDate}
+					onChange={e => checkDateInput(e)}
 					ref={yearRef}
 				/>
 			</S.LayoutWrapper>

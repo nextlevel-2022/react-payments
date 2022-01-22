@@ -11,7 +11,6 @@ const Template = args => <CardNumberInput {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-	width: "327px",
 	label: "카드번호",
 	cardNumber: {
 		[FIRST]: "1111",

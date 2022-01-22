@@ -12,6 +12,5 @@ const Template = args => <CardExpirationDateInput {...args} />;
 export const Default = Template.bind({});
 Default.args = {
 	label: "만료일",
-	width: "138px",
 	cardExpirationDate: { [MONTH]: "10", [YEAR]: "23" },
 };

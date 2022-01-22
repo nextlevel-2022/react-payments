@@ -21,6 +21,7 @@ export const DefaultLabel = styled.label`
 
 export const DefaultInput = styled.input`
 	background-color: transparent;
+	text-align: center;
 	border: none;
 
 	&:focus {
@@ -29,7 +30,6 @@ export const DefaultInput = styled.input`
 
 	&[type="password"] {
 		font-family: Verdana;
-		text-align: center;
 		letter-spacing: 2px;
 	}
 

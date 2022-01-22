@@ -16,5 +16,5 @@ export const Input = styled(DefalutStyledInput)`
 `;
 
 export const Dot = styled(SecureDot)`
-	margin-left: 14px;
+	margin-left: 28px;
 `;
