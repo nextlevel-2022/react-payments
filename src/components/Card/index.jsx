@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Card = props => {
 	const companyType = props.data.CREDIT_CARD_COMPANY !== '' || props.data.CREDIT_CARD_COMPANY !== undefined;

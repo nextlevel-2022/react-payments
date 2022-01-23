@@ -30,7 +30,7 @@ const CardNumberInput = props => {
 					onChange={e=> {
 						const value = e.target.value;
 						onChangeCardNumber(e);
-						props.setData({ ...props.data, CARD_NUMBER_1: value, CREDIT_CARD_COMPANY: Number(value.substr(0, 1)) });
+						props.setData({ ...props.data, CARD_NUMBER_1: value, CREDIT_CARD_COMPANY: Number(value.charAt(0)) });
 						if (value.length >= CARD_INPUT_LENGTH.CARD_NUMBERS) { props.inputRef.current[1].focus(); }
 					}}
 				/>
