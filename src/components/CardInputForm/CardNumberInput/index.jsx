@@ -4,17 +4,16 @@ import PropTypes from "prop-types";
 import { FIRST, FOURTH, SECOND, THIRD } from "../../../config/constant";
 import InputWrapper from "../InputWrapper";
 import * as S from "./style";
+import { useImperativeHandle } from "react";
 
-const CardNumberInput = props => {
+const CardNumberInput = React.forwardRef((props, cardNumberRef) => {
 	const { label, cardNumber, onChangeCardNumber } = props;
 
 	const firstRef = useRef(null);
 	const secondRef = useRef(null);
-	const thirdRef = useRef(null);
 	const fourthRef = useRef(null);
-	const refs = [firstRef, secondRef, thirdRef, fourthRef];
+	const refs = [firstRef, secondRef, cardNumberRef, fourthRef];
 
-	// ToDo: input의 type="password"일 때 숫자 유효성 검사
 	const checkNumber = e => {
 		const { name: idx, value } = e.target;
 		const isLessFourDigits = e.target.value.length < 4;
@@ -26,6 +25,7 @@ const CardNumberInput = props => {
 		}
 		if (isFourDigits) {
 			onChangeCardNumber(e);
+			console.log(e);
 			controlFocue(idx);
 		}
 	};
@@ -43,52 +43,60 @@ const CardNumberInput = props => {
 	};
 
 	return (
-		<InputWrapper label={label}>
+		<InputWrapper htmlFor="cardNumber-first" label={label}>
 			<S.LayoutWrapper>
 				<S.Input
 					type="number"
 					min="0"
 					max="9999"
+					id="cardNumber-first"
 					name={FIRST}
 					value={cardNumber[FIRST]}
 					onChange={e => checkNumber(e)}
 					autoFocus
 					ref={firstRef}
+					required
 				/>
 				<S.Divider>-</S.Divider>
 				<S.Input
 					type="number"
 					min="0"
 					max="9999"
+					id="cardNumber-second"
 					name={SECOND}
 					value={cardNumber[SECOND]}
 					onChange={e => checkNumber(e)}
 					ref={secondRef}
+					required
 				/>
 				<S.Divider>-</S.Divider>
 				<S.Input
 					type="password"
 					min="0"
 					max="9999"
+					id="cardNumber-third"
 					name={THIRD}
 					value={cardNumber[THIRD]}
 					onChange={e => checkNumber(e)}
-					ref={thirdRef}
+					ref={cardNumberRef}
+					required
 				/>
 				<S.Divider>-</S.Divider>
 				<S.Input
 					type="password"
 					min="0"
 					max="9999"
+					id="cardNumber-fourth"
 					name={FOURTH}
 					value={cardNumber[FOURTH]}
 					onChange={e => checkNumber(e)}
 					ref={fourthRef}
+					required
 				/>
 			</S.LayoutWrapper>
 		</InputWrapper>
 	);
-};
+});
 
 CardNumberInput.propTypes = {
 	label: PropTypes.string.isRequired,

@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 import * as S from "./style";
 import TextButton from "../../components/TextButton";
-import { DONE, LIST, SECOND } from "../../config/constant";
+import { DONE, FOURTH, LIST, SECOND } from "../../config/constant";
 import BackButton from "../../components/ BackButton";
 import Card from "../../components/Card";
 import CardInputForm from "../../components/CardInputForm";
@@ -19,7 +19,6 @@ const CardAdd = props => {
 		cardExpirationDate,
 		cardSecureCode,
 		cardPassword,
-		onChangeCardName,
 		onChangeCardNumber,
 		onChangeCardOwner,
 		onChangeCardExpirationDate,
@@ -45,6 +44,11 @@ const CardAdd = props => {
 	const onNext = () => {
 		setPage(DONE);
 	};
+
+	const cardNumberRef = useRef(null);
+	const cardExpirationDateRef = useRef(null);
+	const cardSecureCodeRef = useRef(null);
+	const cardPasswordRef = useRef(null);
 
 	return (
 		<div className="app">
@@ -73,6 +77,12 @@ const CardAdd = props => {
 				onChangeCardSecureCode={onChangeCardSecureCode}
 				cardPassword={cardPassword}
 				onChangeCardPassword={onChangeCardPassword}
+				ref={{
+					cardNumberRef,
+					cardExpirationDateRef,
+					cardSecureCodeRef,
+					cardPasswordRef,
+				}}
 			/>
 			<S.ButtonBox>
 				<TextButton content="다음" onClick={onNext} color="#04C09E" />
@@ -82,6 +92,7 @@ const CardAdd = props => {
 					<CardCompanyList
 						setIsModalOn={setIsModalOn}
 						setCardName={setCardName}
+						ref={cardNumberRef}
 					/>
 				</Modal>
 			)}
@@ -94,7 +105,6 @@ CardAdd.propTypes = {
 	cardNumber: PropTypes.objectOf(PropTypes.string),
 	cardOwner: PropTypes.string.isRequired,
 	cardExpirationDate: PropTypes.objectOf(PropTypes.string),
-	onChangeCardName: PropTypes.func.isRequired,
 	onChangeCardNumber: PropTypes.func.isRequired,
 	onChangeCardOwner: PropTypes.func.isRequired,
 	onChangeCardExpirationDate: PropTypes.func.isRequired,

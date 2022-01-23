@@ -7,6 +7,7 @@ import { FIRST, SECOND } from "../../../config/constant";
 
 const CardPasswordInput = props => {
 	const { label, cardPassword, onChangeCardPassword } = props;
+	console.log(cardPassword[FIRST], cardPassword[SECOND]);
 
 	const checkNumber = e => {
 		const { value } = e.target;
@@ -16,10 +17,11 @@ const CardPasswordInput = props => {
 	};
 
 	return (
-		<InputWrapper label={label}>
+		<InputWrapper htmlFor="cardPassword-frist" label={label}>
 			<S.LayoutWrapper>
 				<S.Input
 					type="password"
+					id="cardPassword-frist"
 					name={FIRST}
 					maxLength={1}
 					value={cardPassword[FIRST]}
@@ -27,6 +29,7 @@ const CardPasswordInput = props => {
 				/>
 				<S.Input
 					type="password"
+					id="cardPassword-second"
 					name={SECOND}
 					maxLength={1}
 					value={cardPassword[SECOND]}

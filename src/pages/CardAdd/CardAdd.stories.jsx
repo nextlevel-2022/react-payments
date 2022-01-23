@@ -27,6 +27,7 @@ Default.args = {
 	},
 	cardOwner: "",
 	cardExpirationDate: { [MONTH]: "10", [YEAR]: "23" },
+	cardPassword: { [FIRST]: "", [SECOND]: "" },
 };
 
 export const ModalOn = Template.bind({});

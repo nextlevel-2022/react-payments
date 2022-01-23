@@ -10,6 +10,7 @@ const CardOwnerInput = props => {
 	return (
 		<InputWrapper
 			label={label}
+			htmlFor="cardOwner"
 			width={width}
 			useToCount={true}
 			dataToCount={cardOwner}
@@ -19,6 +20,7 @@ const CardOwnerInput = props => {
 				<S.Input
 					type="text"
 					width={width}
+					id="cardOwner"
 					maxLength={30}
 					placeholder="카드에 표시된 이름과 동일하게 입력하세요."
 					value={cardOwner}

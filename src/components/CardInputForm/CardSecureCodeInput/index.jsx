@@ -28,10 +28,11 @@ const CardSecureCodeInput = props => {
 	};
 
 	return (
-		<InputWrapper label={label}>
+		<InputWrapper htmlFor="cardSecureCode" label={label}>
 			<S.LayoutWrapper>
 				<S.Input
 					type="password"
+					id="cardSecureCode"
 					maxLength={3}
 					value={cardSecureCode}
 					onChange={e => checkNumber(e)}

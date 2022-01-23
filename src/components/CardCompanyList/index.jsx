@@ -5,7 +5,7 @@ import * as S from "./style";
 import CircleButton from "../CircleButton";
 import palette from "../../styles/global/palette";
 
-const CardCompanyList = props => {
+const CardCompanyList = React.forwardRef((props, cardNumberBackRef) => {
 	const { setCardName, setIsModalOn } = props;
 	const companyList = [
 		"포코",
@@ -21,6 +21,7 @@ const CardCompanyList = props => {
 	const onClick = (_, val) => {
 		setCardName(val);
 		setIsModalOn(false);
+		cardNumberBackRef.current.focus();
 	};
 
 	return (
@@ -36,7 +37,7 @@ const CardCompanyList = props => {
 			))}
 		</S.List>
 	);
-};
+});
 
 CardCompanyList.propTypes = {
 	setCardName: PropTypes.func.isRequired,

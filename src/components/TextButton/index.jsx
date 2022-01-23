@@ -7,7 +7,7 @@ const Button = ({ content, onClick, color }) => {
 		<div className="button-box">
 			<StyledButton
 				className="button-text"
-				type="button"
+				type="submit"
 				color={color}
 				onClick={onClick}
 			>
