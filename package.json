@@ -1,5 +1,6 @@
 {
 	"name": "react-payments",
+	"homepage": "http://https://leo-xee.github.io/react-payments/",
 	"version": "0.0.1",
 	"main": "./src/index.js",
 	"repository": "git@github.com:Leo-Xee/react-payments.git",
@@ -8,6 +9,7 @@
 	"scripts": {
 		"dev": "webpack serve",
 		"build": "webpack --config webpack.config.js --mode production",
+		"deploy": "yarn build && gh-pages -d dist",
 		"storybook": "start-storybook -p 6006 ",
 		"build-storybook": "build-storybook"
 	},
@@ -38,6 +40,7 @@
 		"eslint-plugin-react": "^7.28.0",
 		"eslint-plugin-react-hooks": "^4.3.0",
 		"file-loader": "^6.2.0",
+		"gh-pages": "^3.2.3",
 		"html-webpack-plugin": "^5.5.0",
 		"prettier": "^2.5.1",
 		"style-loader": "^3.3.1",
