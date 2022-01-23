@@ -1,0 +1,50 @@
+{
+  "name": "react-payments",
+  "version": "1.0.0",
+  "description": "<p align=\"middle\" >   <img src=\"https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/0fefce79602043a9b3281ee1dd8f4be6\" width=\"400\"> </p> <h2 align=\"middle\">페이먼츠</h2> <p align=\"middle\">React 모바일 페이먼츠 애플리케이션</p> </p>",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack build --config ./webpack.config.js",
+    "start": "webpack-dev-server --open",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisohh/react-payments.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lisohh/react-payments/issues"
+  },
+  "homepage": "https://github.com/lisohh/react-payments#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@storybook/addon-actions": "^6.4.12",
+    "@storybook/addon-essentials": "^6.4.12",
+    "@storybook/addon-links": "^6.4.12",
+    "@storybook/react": "^6.4.12",
+    "@types/node": "^16.7.2",
+    "@types/react": "^17.0.19",
+    "@types/react-dom": "^17.0.9",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.5.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "html-webpack-plugin": "^5.3.2",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.3.5",
+    "webpack": "^5.51.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.0.0"
+  }
+}
