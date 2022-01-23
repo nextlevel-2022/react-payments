@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import * as S from "./style";
 import CardNumberInput from "./CardNumberInput";
 import CardExpirationDateInput from "./CardExpirationDateInput";
-import { FOURTH } from "../../config/constant";
 import CardOwnerInput from "./CardOwnerInput";
 import CardSecureCodeInput from "./CardSecureCodeInput";
 import CardPasswordInput from "./CardPasswordInput";
 
 const CardInputForm = React.forwardRef((props, ref) => {
 	const {
+		children,
 		cardNumber,
 		cardOwner,
 		cardExpirationDate,
@@ -21,18 +21,13 @@ const CardInputForm = React.forwardRef((props, ref) => {
 		onChangeCardExpirationDate,
 		onChangeCardSecureCode,
 		onChangeCardPassword,
+		onNext,
 	} = props;
-
-	const {
-		cardNumberRef,
-		cardExpirationDateRef,
-		cardSecureCodeRef,
-		cardPasswordRef,
-	} = ref;
+	const refsObj = ref;
 
 	const onSubmit = e => {
-		e.preventDeafult();
-		console.log("submited!");
+		e.preventDefault();
+		onNext();
 	};
 
 	return (
@@ -42,30 +37,34 @@ const CardInputForm = React.forwardRef((props, ref) => {
 					label="카드 번호"
 					cardNumber={cardNumber}
 					onChangeCardNumber={onChangeCardNumber}
-					ref={cardNumberRef}
+					ref={refsObj}
 				/>
 				<CardExpirationDateInput
 					label="만료일"
 					cardExpirationDate={cardExpirationDate}
 					onChangeCardExpirationDate={onChangeCardExpirationDate}
-					ref={cardExpirationDateRef}
+					ref={refsObj}
 				/>
 				<CardOwnerInput
 					label="카드 소유자 이름 (선택)"
 					width="318px"
 					cardOwner={cardOwner}
 					onChangeCardOwner={onChangeCardOwner}
+					ref={refsObj}
 				/>
 				<CardSecureCodeInput
 					label="보안 코드(CCV/CVV)"
 					cardSecureCode={cardSecureCode}
 					onChangeCardSecureCode={onChangeCardSecureCode}
+					ref={refsObj}
 				/>
 				<CardPasswordInput
 					label="카드 비밀번호"
 					cardPassword={cardPassword}
 					onChangeCardPassword={onChangeCardPassword}
+					ref={refsObj}
 				/>
+				<S.ButtonBox>{children}</S.ButtonBox>
 			</S.Form>
 		</div>
 	);

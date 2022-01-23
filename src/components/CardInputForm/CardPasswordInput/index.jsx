@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 
 import * as S from "./style";
 import InputWrapper from "../InputWrapper";
 import { FIRST, SECOND } from "../../../config/constant";
 
-const CardPasswordInput = props => {
+const CardPasswordInput = React.forwardRef((props, ref) => {
 	const { label, cardPassword, onChangeCardPassword } = props;
-	console.log(cardPassword[FIRST], cardPassword[SECOND]);
+	const { cardPasswordRef } = ref;
+
+	const secondRef = useRef(null);
 
 	const checkNumber = e => {
-		const { value } = e.target;
+		const { name, value } = e.target;
 
 		if (isNaN(value)) return;
 		onChangeCardPassword(e);
+
+		if (+name === FIRST) {
+			secondRef.current.focus();
+		} else if (+name === SECOND) {
+			secondRef.current.blur();
+		}
 	};
 
 	return (
@@ -26,6 +34,8 @@ const CardPasswordInput = props => {
 					maxLength={1}
 					value={cardPassword[FIRST]}
 					onChange={e => checkNumber(e)}
+					ref={cardPasswordRef}
+					required
 				/>
 				<S.Input
 					type="password"
@@ -34,13 +44,15 @@ const CardPasswordInput = props => {
 					maxLength={1}
 					value={cardPassword[SECOND]}
 					onChange={e => checkNumber(e)}
+					ref={secondRef}
+					required
 				/>
 				<S.Dot width="7px" height="7px" />
 				<S.Dot width="7px" height="7px" />
 			</S.LayoutWrapper>
 		</InputWrapper>
 	);
-};
+});
 
 CardPasswordInput.propTypes = {
 	label: PropTypes.string.isRequired,

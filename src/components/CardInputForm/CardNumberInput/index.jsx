@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { FIRST, FOURTH, SECOND, THIRD } from "../../../config/constant";
 import InputWrapper from "../InputWrapper";
 import * as S from "./style";
-import { useImperativeHandle } from "react";
 
-const CardNumberInput = React.forwardRef((props, cardNumberRef) => {
+const CardNumberInput = React.forwardRef((props, ref) => {
 	const { label, cardNumber, onChangeCardNumber } = props;
+	const { cardNumberRef, cardExpirationDateRef } = ref;
 
 	const firstRef = useRef(null);
 	const secondRef = useRef(null);
@@ -25,21 +25,16 @@ const CardNumberInput = React.forwardRef((props, cardNumberRef) => {
 		}
 		if (isFourDigits) {
 			onChangeCardNumber(e);
-			console.log(e);
-			controlFocue(idx);
+			idx <= THIRD ? moveFocus(idx) : jumpFocus();
 		}
 	};
 
-	const controlFocue = idx => {
-		const moveFocus = idx => {
-			refs[idx].current.focus();
-		};
+	const moveFocus = idx => {
+		refs[idx].current.focus();
+	};
 
-		const removeFocus = idx => {
-			refs[idx].current.blur();
-		};
-
-		idx <= THIRD ? moveFocus(idx) : removeFocus(idx - 1);
+	const jumpFocus = () => {
+		cardExpirationDateRef.current.focus();
 	};
 
 	return (

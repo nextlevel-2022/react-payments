@@ -6,8 +6,9 @@ import QuestionMark from "../../../assets/question-circle-regular.svg";
 import InputWrapper from "../InputWrapper";
 import ToolTip from "../../ToolTip";
 
-const CardSecureCodeInput = props => {
+const CardSecureCodeInput = React.forwardRef((props, ref) => {
 	const { label, cardSecureCode, onChangeCardSecureCode } = props;
+	const { cardPasswordRef } = ref;
 	const [isToolTipOn, setIsToolTipOn] = useState(false);
 
 	const onChangeToolTip = () => {
@@ -24,6 +25,7 @@ const CardSecureCodeInput = props => {
 			onChangeCardSecureCode(e);
 		} else if (isThreeDigits) {
 			onChangeCardSecureCode(e);
+			cardPasswordRef.current.focus();
 		}
 	};
 
@@ -36,6 +38,7 @@ const CardSecureCodeInput = props => {
 					maxLength={3}
 					value={cardSecureCode}
 					onChange={e => checkNumber(e)}
+					required
 				/>
 				<S.SVGWrapper
 					onMouseEnter={onChangeToolTip}
@@ -47,7 +50,7 @@ const CardSecureCodeInput = props => {
 			</S.LayoutWrapper>
 		</InputWrapper>
 	);
-};
+});
 
 CardSecureCodeInput.propTypes = {
 	label: PropTypes.string.isRequired,

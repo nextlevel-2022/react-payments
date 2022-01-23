@@ -11,7 +11,6 @@ const useInput = initialForm => {
 		} else {
 			setForm(e.target.value);
 		}
-		console.log(form);
 	};
 
 	return [form, onChange, setForm];

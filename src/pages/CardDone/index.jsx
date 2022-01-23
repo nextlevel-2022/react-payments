@@ -14,7 +14,12 @@ const CardDone = ({ setPage }) => {
 			<header>
 				<h1 className="page-title">등록완료</h1>
 			</header>
-			<TextButton content="확인" color="#04C09E" onClick={onClick} />
+			<TextButton
+				type="button"
+				content="확인"
+				color="#04C09E"
+				onClick={onClick}
+			/>
 		</div>
 	);
 };

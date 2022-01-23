@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import CardNumberInput from "./index";
 import { FIRST, FOURTH, SECOND, THIRD } from "../../../config/constant";
 
@@ -7,7 +7,16 @@ export default {
 	component: CardNumberInput,
 };
 
-const Template = args => <CardNumberInput {...args} />;
+const Template = args => {
+	const refsObj = {
+		cardNumberRef: useRef(null),
+		cardExpirationDateRef: useRef(null),
+		cardOwnerRef: useRef(null),
+		cardSecureCodeRef: useRef(null),
+		cardPasswordRef: useRef(null),
+	};
+	return <CardNumberInput {...args} ref={refsObj} />;
+};
 
 export const Default = Template.bind({});
 Default.args = {

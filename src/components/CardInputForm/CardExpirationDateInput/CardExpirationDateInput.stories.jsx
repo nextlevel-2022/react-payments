@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import CardExpirationDateInput from "./index";
 import { MONTH, YEAR } from "../../../config/constant";
 
@@ -7,7 +7,16 @@ export default {
 	component: CardExpirationDateInput,
 };
 
-const Template = args => <CardExpirationDateInput {...args} />;
+const Template = args => {
+	const refsObj = {
+		cardNumberRef: useRef(null),
+		cardExpirationDateRef: useRef(null),
+		cardOwnerRef: useRef(null),
+		cardSecureCodeRef: useRef(null),
+		cardPasswordRef: useRef(null),
+	};
+	return <CardExpirationDateInput {...args} ref={refsObj} />;
+};
 
 export const Default = Template.bind({});
 Default.args = {

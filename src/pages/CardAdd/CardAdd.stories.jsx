@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import CardAdd from "./index";
 import {
 	FIRST,
@@ -14,8 +14,17 @@ export default {
 	component: CardAdd,
 };
 
-const Template = args => <CardAdd {...args} />;
+const Template = args => {
+	const refsObj = {
+		cardNumberRef: useRef(null),
+		cardExpirationDateRef: useRef(null),
+		cardOwnerRef: useRef(null),
+		cardSecureCodeRef: useRef(null),
+		cardPasswordRef: useRef(null),
+	};
 
+	return <CardAdd {...args} ref={refsObj} />;
+};
 export const Default = Template.bind({});
 Default.args = {
 	cardName: "로이드",

@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 import * as S from "./style";
 import TextButton from "../../components/TextButton";
-import { DONE, FOURTH, LIST, SECOND } from "../../config/constant";
-import BackButton from "../../components/ BackButton";
+import { DONE, LIST, SECOND } from "../../config/constant";
+import BackButton from "../../components/BackButton";
 import Card from "../../components/Card";
 import CardInputForm from "../../components/CardInputForm";
 import palette from "../../styles/global/palette";
@@ -45,10 +45,13 @@ const CardAdd = props => {
 		setPage(DONE);
 	};
 
-	const cardNumberRef = useRef(null);
-	const cardExpirationDateRef = useRef(null);
-	const cardSecureCodeRef = useRef(null);
-	const cardPasswordRef = useRef(null);
+	const refsObj = {
+		cardNumberRef: useRef(null),
+		cardExpirationDateRef: useRef(null),
+		cardOwnerRef: useRef(null),
+		cardSecureCodeRef: useRef(null),
+		cardPasswordRef: useRef(null),
+	};
 
 	return (
 		<div className="app">
@@ -77,22 +80,17 @@ const CardAdd = props => {
 				onChangeCardSecureCode={onChangeCardSecureCode}
 				cardPassword={cardPassword}
 				onChangeCardPassword={onChangeCardPassword}
-				ref={{
-					cardNumberRef,
-					cardExpirationDateRef,
-					cardSecureCodeRef,
-					cardPasswordRef,
-				}}
-			/>
-			<S.ButtonBox>
-				<TextButton content="다음" onClick={onNext} color="#04C09E" />
-			</S.ButtonBox>
+				onNext={onNext}
+				ref={refsObj}
+			>
+				<TextButton type="submit" content="다음" color="#04C09E" />
+			</CardInputForm>
 			{isModalOn && (
 				<Modal setIsModalOn={setIsModalOn}>
 					<CardCompanyList
 						setIsModalOn={setIsModalOn}
 						setCardName={setCardName}
-						ref={cardNumberRef}
+						ref={refsObj}
 					/>
 				</Modal>
 			)}

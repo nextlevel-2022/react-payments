@@ -4,8 +4,9 @@ import PropTypes from "prop-types";
 import InputWrapper from "../InputWrapper";
 import * as S from "./style";
 
-const CardOwnerInput = props => {
+const CardOwnerInput = React.forwardRef((props, ref) => {
 	const { label, width, cardOwner, onChangeCardOwner } = props;
+	const { cardOwnerRef } = ref;
 
 	return (
 		<InputWrapper
@@ -25,11 +26,13 @@ const CardOwnerInput = props => {
 					placeholder="카드에 표시된 이름과 동일하게 입력하세요."
 					value={cardOwner}
 					onChange={onChangeCardOwner}
+					ref={cardOwnerRef}
+					required
 				/>
 			</div>
 		</InputWrapper>
 	);
-};
+});
 
 CardOwnerInput.propTypes = {
 	label: PropTypes.string.isRequired,

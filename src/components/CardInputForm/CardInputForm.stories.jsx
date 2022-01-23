@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import CardInputForm from "./index";
 import {
 	FIRST,
@@ -14,8 +14,16 @@ export default {
 	component: CardInputForm,
 };
 
-const Template = args => <CardInputForm {...args} />;
-
+const Template = args => {
+	const refsObj = {
+		cardNumberRef: useRef(null),
+		cardExpirationDateRef: useRef(null),
+		cardOwnerRef: useRef(null),
+		cardSecureCodeRef: useRef(null),
+		cardPasswordRef: useRef(null),
+	};
+	return <CardInputForm {...args} ref={refsObj} />;
+};
 export const Default = Template.bind({});
 Default.args = {
 	cardName: "로이드카드",
@@ -25,6 +33,7 @@ Default.args = {
 		[THIRD]: "3333",
 		[FOURTH]: "4444",
 	},
+	cardPassword: { [FIRST]: "", [SECOND]: "" },
 	cardOwner: "NAME",
 	cardExpirationDate: { [MONTH]: "10", [YEAR]: "23" },
 };
