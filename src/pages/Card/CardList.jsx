@@ -21,7 +21,7 @@ const CardList = props => {
 					<div className="card-box">
 						<div className="empty-card" onClick={router}>+</div>
 					</div>
-					{props.dataList.slice(0).reverse().map((item) => //역순정렬
+					{props.dataList.slice(0).reverse().map((item) =>
 						<div key={item.CARD_ID}>
 							<Card data={item} company={props.company} /> 
 							<span className="card-nickname">법인카드</span>

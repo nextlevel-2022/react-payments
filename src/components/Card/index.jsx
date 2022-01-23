@@ -48,11 +48,9 @@ const Card = props => {
 									'' : ` - ${props.data.CARD_NUMBER_2}`
 								}
 								{ props.data.CARD_NUMBER_3 === '' || props.data.CARD_NUMBER_3 === undefined ? 
-									// '' : ` - ${props.data.CARD_NUMBER_3}`
 									'' : ` - ${firstSecurityInput}`
 								}
 								{ props.data.CARD_NUMBER_4 === '' || props.data.CARD_NUMBER_4 === undefined ? 
-									// '' : ` - ${props.data.CARD_NUMBER_4}`
 									'' : ` - ${secondSecurityInput}`
 								}
 							</span>
