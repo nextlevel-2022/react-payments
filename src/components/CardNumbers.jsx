@@ -2,15 +2,22 @@ import React, { useState } from 'react';
 
 const CardNumbers = () => {
   const [inputs, setInputs] = useState({
-    cardNumber1: null,
-    cardNumber2: null,
-    cardNumber3: null,
-    cardNumber4: null,
+    cardNumber1: '',
+    cardNumber2: '',
+    cardNumber3: '',
+    cardNumber4: '',
   });
 
   function handleChange(event) {
-    setInputs(old => ({ ...old, [event.target.name]: event.target.value }));
+    const value = event.target.value;
+    if (!isNaN(value)) {
+      // value가 문자열이면 NaN이니까, NaN이 아니면..., 즉 숫자일 때에만!
+      setInputs(old => ({ ...old, [event.target.name]: value }));
+    } else {
+      console.log('문자열이야!', value);
+    }
   }
+
   console.log(inputs);
   return (
     <>
@@ -21,34 +28,42 @@ const CardNumbers = () => {
         <input
           id="CardNumber1"
           name="cardNumber1"
+          type="text"
+          value={inputs.cardNumber1}
           onChange={handleChange}
           className="input-basic"
-          type="text"
+          minLength={4}
           maxLength={4}
           required
         />
         <input
           className="input-basic"
           name="cardNumber2"
-          onChange={handleChange}
           type="text"
+          minLength={4}
           maxLength={4}
+          value={inputs.cardNumber2}
+          onChange={handleChange}
           required
         />
         <input
           className="input-basic"
           name="cardNumber3"
-          onChange={handleChange}
           type="password"
+          minLength={4}
           maxLength={4}
+          value={inputs.cardNumber3}
+          onChange={handleChange}
           required
         />
         <input
           className="input-basic"
           name="cardNumber4"
-          onChange={handleChange}
           type="password"
+          minLength={4}
           maxLength={4}
+          value={inputs.cardNumber4}
+          onChange={handleChange}
           required
         />
       </div>
