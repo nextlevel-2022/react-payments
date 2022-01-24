@@ -1,30 +1,24 @@
-import React, { useState } from "react";
+import React, { createRef } from "react";
 import { EmptyCardItem } from "../../components/EmptyCardItem";
 import { Link } from "react-router-dom";
 
-export default function AddCardPage() {
+const cardNumberNames = ['cardNumber0', 'cardNumber1', 'cardNumber2', 'cardNumber3']
 
-  const [cardNumber, setCardNumber] = useState({
-    number1: '',
-    number2: '',
-    number3: '',
-    number4: '',
-  });
+export default function AddCardPage() {
+  const cardNumberRefs = cardNumberNames.map(() => createRef<HTMLInputElement>());
 
   const handleChangeCardNumber: React.ChangeEventHandler<HTMLInputElement> = ({ target }) => {
-    const { id, name, value, maxLength } = target;
+    const { name, value, maxLength } = target;
 
     if (value.length >= maxLength) {
-      const arr = id.split('-'), nextId = parseInt(arr[arr.length - 1]);
+      const id = cardNumberNames.findIndex((_name) => _name === name);
 
-      const nextCardNumberInput = document.querySelector(`input#input-card-number-${nextId + 1}`);
+      const $nextInput = cardNumberRefs[id + 1].current;
 
-      if (nextCardNumberInput) {
-        (nextCardNumberInput as HTMLInputElement).select();
+      if ($nextInput) {
+        ($nextInput as HTMLInputElement).select();
       }
     }
-
-    setCardNumber(prevState => ({ ...prevState, [name]: value }))
   };
 
 
@@ -40,27 +34,28 @@ export default function AddCardPage() {
         <label htmlFor={'input-card-number-1'} className="input-title">카드 번호</label>
         <div className="input-box">
           <input
-            id={'input-card-number-1'}
-            name={'number1'}
             className="input-basic"
-            type="text"
+            name={cardNumberNames[0]}
+            ref={cardNumberRefs[0]}
             onChange={handleChangeCardNumber}
-            value={cardNumber.number1}
-            maxLength={4}
+            type="text" maxLength={4}
           />
           <input
-            id={'input-card-number-2'}
-            className="input-basic" name={'number2'} value={cardNumber.number2}
+            className="input-basic"
+            name={cardNumberNames[1]}
+            ref={cardNumberRefs[1]}
             onChange={handleChangeCardNumber}
             type="text" maxLength={4}/>
           <input
-            id={'input-card-number-3'}
-            className="input-basic" name={'number3'} value={cardNumber.number3}
+            className="input-basic"
+            name={cardNumberNames[2]}
+            ref={cardNumberRefs[2]}
             onChange={handleChangeCardNumber}
             type="password" maxLength={4}/>
           <input
-            id={'input-card-number-4'}
-            className="input-basic" name={'number4'} value={cardNumber.number4}
+            className="input-basic"
+            name={cardNumberNames[3]}
+            ref={cardNumberRefs[3]}
             onChange={handleChangeCardNumber}
             type="password" maxLength={4}/>
         </div>
