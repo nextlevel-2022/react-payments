@@ -20,6 +20,8 @@ const App = () => {
     cardNumber2: '',
     cardNumber3: '',
     cardNumber4: '',
+    expireMonth: '',
+    expireYear: '',
   });
 
   function handleChange(event) {
@@ -31,6 +33,7 @@ const App = () => {
       console.log('문자열이야!', value);
     }
   }
+  console.log(inputs);
 
   return (
     <div className="app">
