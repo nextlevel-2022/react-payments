@@ -25,47 +25,24 @@ const CardNumbers = () => {
         카드 번호
       </label>
       <div className="input-box">
-        <input
-          id="CardNumber1"
-          name="cardNumber1"
-          type="text"
-          value={inputs.cardNumber1}
-          onChange={handleChange}
-          className="input-basic"
-          minLength={4}
-          maxLength={4}
-          required
-        />
-        <input
-          className="input-basic"
-          name="cardNumber2"
-          type="text"
-          minLength={4}
-          maxLength={4}
-          value={inputs.cardNumber2}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className="input-basic"
-          name="cardNumber3"
-          type="password"
-          minLength={4}
-          maxLength={4}
-          value={inputs.cardNumber3}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className="input-basic"
-          name="cardNumber4"
-          type="password"
-          minLength={4}
-          maxLength={4}
-          value={inputs.cardNumber4}
-          onChange={handleChange}
-          required
-        />
+        {[
+          ['CardNumber1', 'cardNumber1', 'text'],
+          ['CardNumber2', 'cardNumber2', 'text'],
+          ['CardNumber3', 'cardNumber3', 'password'],
+          ['CardNumber4', 'cardNumber4', 'password'],
+        ].map(([id, name, type]) => (
+          <input
+            id={id}
+            name={name}
+            type={type}
+            value={inputs[name]}
+            onChange={handleChange}
+            className="input-basic"
+            minLength={4}
+            maxLength={4}
+            required
+          />
+        ))}
       </div>
     </>
   );
