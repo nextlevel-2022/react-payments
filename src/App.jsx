@@ -14,22 +14,36 @@ const App = () => {
   {
     /* 밑에 있는 컴포넌트들에게 공통적으로 바뀌는 상태값을 prop으로 내려주는 함수 만들기 */
   }
+
   const [inputs, setInputs] = useState({
-    cardNumber1: null,
-    cardNumber2: null,
-    cardNumber3: null,
-    cardNumber4: null,
+    cardNumber1: '',
+    cardNumber2: '',
+    cardNumber3: '',
+    cardNumber4: '',
   });
+
+  function handleChange(event) {
+    const value = event.target.value;
+    if (!isNaN(value)) {
+      // value가 문자열이면 NaN이니까, NaN이 아니면..., 즉 숫자일 때에만!
+      setInputs(old => ({ ...old, [event.target.name]: value }));
+    } else {
+      console.log('문자열이야!', value);
+    }
+  }
 
   return (
     <div className="app">
       <AddCard />
-      <div className="input-container">
-        <CardNumbers />
-      </div>
-      {[ExpDate, CardOwnerName, CardSecurityCode, CardPassword].map(Input => (
+      {[
+        CardNumbers,
+        ExpDate,
+        CardOwnerName,
+        CardSecurityCode,
+        CardPassword,
+      ].map(Input => (
         <div className="input-container">
-          <Input />
+          <Input inputs={inputs} handleChange={handleChange} />
         </div>
       ))}
 
