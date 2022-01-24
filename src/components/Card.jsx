@@ -12,14 +12,19 @@ const Card = ({ card }) => {
         <div className="card-bottom">
           <div className="card-bottom__number">
             <span className="card-text">
-              {card.number
-                ?.map((v, i) => (i >= 2 ? "o".repeat(v.length) : v))
+              {Object.values(card.number)
+                .map((v, i) => (i >= 2 ? "*".repeat(v.length) : v))
+                .filter(Boolean)
                 .join(" - ")}
             </span>
           </div>
           <div className="card-bottom__info">
-            <span className="card-text">{card.ownerName}</span>
-            <span className="card-text">{card.expire?.join(" / ")}</span>
+            <span className="card-text">{card.userName}</span>
+            <span className="card-text">
+              {card.expire.MM}
+              {card.expire.MM.length === 2 && " / "}
+              {card.expire.YY}
+            </span>
           </div>
         </div>
       </div>
