@@ -18,19 +18,19 @@ const CardExpirationDateInput = React.forwardRef((props, ref) => {
 		const isVaildMonth = value >= min && value <= max;
 		const isVaildYear = value >= min && value <= max;
 
+		if (isLessTwoDigits) {
+			onChangeCardExpirationDate(e);
+		}
+
 		if (name === MONTH) {
-			if (isLessTwoDigits) {
-				onChangeCardExpirationDate(e);
-			} else if (isVaildMonth && isTwoDigits) {
+			if (isVaildMonth && isTwoDigits) {
 				onChangeCardExpirationDate(e);
 				yearRef.current.focus();
 			}
 		}
 
 		if (name === YEAR) {
-			if (isLessTwoDigits) {
-				onChangeCardExpirationDate(e);
-			} else if (isVaildYear && isTwoDigits) {
+			if (isVaildYear && isTwoDigits) {
 				onChangeCardExpirationDate(e);
 				cardOwnerRef.current.focus();
 			}

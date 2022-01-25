@@ -42,50 +42,43 @@ const CardNumberInput = React.forwardRef((props, ref) => {
 			<S.LayoutWrapper>
 				<S.Input
 					type="number"
-					min="0"
-					max="9999"
+					min={1000}
 					id="cardNumber-first"
 					name={FIRST}
 					value={cardNumber[FIRST]}
 					onChange={e => checkNumber(e)}
 					autoFocus
-					ref={firstRef}
+					ref={refs[0]}
 					required
 				/>
 				<S.Divider>-</S.Divider>
 				<S.Input
 					type="number"
-					min="0"
-					max="9999"
 					id="cardNumber-second"
 					name={SECOND}
 					value={cardNumber[SECOND]}
 					onChange={e => checkNumber(e)}
-					ref={secondRef}
+					ref={refs[1]}
 					required
 				/>
 				<S.Divider>-</S.Divider>
 				<S.Input
 					type="password"
-					min="0"
-					max="9999"
 					id="cardNumber-third"
 					name={THIRD}
 					value={cardNumber[THIRD]}
 					onChange={e => checkNumber(e)}
-					ref={cardNumberRef}
+					ref={refs[2]}
 					required
 				/>
 				<S.Divider>-</S.Divider>
 				<S.Input
 					type="password"
-					min="0"
-					max="9999"
 					id="cardNumber-fourth"
 					name={FOURTH}
 					value={cardNumber[FOURTH]}
 					onChange={e => checkNumber(e)}
-					ref={fourthRef}
+					ref={refs[3]}
 					required
 				/>
 			</S.LayoutWrapper>

@@ -19,7 +19,7 @@ const CardCompanyList = React.forwardRef((props, ref) => {
 		"썬",
 	];
 
-	const onClick = (_, val) => {
+	const selectCompany = (_, val) => {
 		setCardName(val);
 		setIsModalOn(false);
 		cardNumberRef.current.focus();
@@ -32,7 +32,7 @@ const CardCompanyList = React.forwardRef((props, ref) => {
 					<CircleButton
 						title={val}
 						backgroundColor={palette[val]}
-						onClick={e => onClick(e, val)}
+						onClick={e => selectCompany(e, val)}
 					/>
 				</S.ListItem>
 			))}

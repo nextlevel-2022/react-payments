@@ -19,7 +19,9 @@ const CardPasswordInput = React.forwardRef((props, ref) => {
 
 		if (+name === FIRST) {
 			secondRef.current.focus();
-		} else if (+name === SECOND) {
+		}
+
+		if (+name === SECOND) {
 			secondRef.current.blur();
 		}
 	};
