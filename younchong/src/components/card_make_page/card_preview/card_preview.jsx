@@ -41,8 +41,8 @@ const CardPreview = ({numbers, date, name, company}) => {
       </section>
       <footer className={styles.cardBottom}>
         <article className={styles.cardBottomInformation}>
-          <span className={styles.cardName}>{`${name !== null ? name : "NAME"}`}</span>
-          <span className={styles.cardDate}>{`${date["MM"] ? date["MM"] : "MM"} / ${date["YY"] ? date["YY"] : "YY"}`}</span>
+          <span className={styles.cardName}>{`${name || "NAME"}`}</span>
+          <span className={styles.cardDate}>{`${date["MM"] || "MM"} / ${date["YY"] || "YY"}`}</span>
         </article>
       </footer>
     </div>
