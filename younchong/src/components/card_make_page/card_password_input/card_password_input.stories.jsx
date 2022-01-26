@@ -13,7 +13,14 @@ const Template = (args) => <CardPasswordInput {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   password: {
-    "firstPassword" : 1,
-    "secondPassword" : 2
+    "firstPassword" : null,
+    "secondPassword" : null
+  },
+  setPassword: function(set) {
+    const passwords = Default.args.password;
+    set(passwords => {
+      const update = {...passwords};
+      return update
+    });
   }
 }

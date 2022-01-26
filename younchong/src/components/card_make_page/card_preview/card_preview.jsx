@@ -27,11 +27,7 @@ const CardPreview = ({numbers, date, name, company}) => {
         <article className={styles.cardChip}></article>
           {Object.keys(numbers).map(key => {
             if (key === "thirdInput" || key === "fourthInput") {
-              let count = numbers[key].length;
-              let passoword = "";
-              while (passoword.length !== count) {
-                passoword += "*";
-              }
+              let passoword = "*".repeat(numbers[key].length);
               return <span className={styles.cardNumber} key={key}>{passoword}</span>
             } else {
               return <span className={styles.cardNumber} key={key}>{numbers[key]}</span>

@@ -16,5 +16,8 @@ Default.args = {
   date: {
     "MM": "03",
     "YY": "96",
+  },
+  setDate: function(e) {
+    Default.args.date = e;
   }
 }

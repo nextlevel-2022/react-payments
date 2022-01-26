@@ -14,10 +14,18 @@ const Template = (args) => <CardNumberInput {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   numbers: {
-    "firstInput": "1111",
-    "secondInput": "1111",
-    "thirdInput": "2222",
-    "fourthInput": "2222",
+    firstInput: "",
+    secondInput: "",
+    thirdInput: "2222",
+    fourthInput: "2222",
+  },
+  setNumber: function(setNumber) {
+    setNumber((Default.args.numbers))
+    console.log()
+   
+  },
+  setCompany: function(e) {
+    console.log(e)
   },
   company: {
     name: '신한카드',

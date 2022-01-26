@@ -12,5 +12,7 @@ const Template = (args) => <CardNameInput {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   name: "younchong",
-  
+  setName: function(e) {
+    Default.args.name = e;
+  }
 }
