@@ -10,6 +10,7 @@ const Input = ({
   width,
   min,
   max,
+  elRef,
   ...props
 }) => {
   return (
@@ -23,6 +24,7 @@ const Input = ({
       data-identifier={identifier}
       minLength={min}
       maxLength={max}
+      ref={elRef}
       {...props}
     />
   );

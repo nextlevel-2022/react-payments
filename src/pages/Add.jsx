@@ -42,7 +42,7 @@ const Add = () => {
     setErrorMsg({ ...errorMsg, cardNumber: null });
     //focus이동
     if (position === "forth" && target.value.length === 4) {
-      console.log("focus 이동 to expire");
+      expireRef.current.focus();
     }
   };
   const setCardExpire = ({ key, position, target }) => {
@@ -73,7 +73,7 @@ const Add = () => {
     });
     //focus이동
     if (position === "YY" && target.value.length === 2) {
-      console.log("focus 이동 to cvc");
+      cvcRef.current.focus();
     }
   };
   const setCardPassword = ({ key, position, target }) => {
@@ -91,8 +91,8 @@ const Add = () => {
         [position]: target.value,
       },
     });
-    if (position === "first" && cardData[key][position].length === 1) {
-      console.log("focus 이동 to second");
+    if (position === "first" && target.value.length === 1) {
+      secondPasswordRef.current.focus();
     }
   };
   const setCVC = ({ target }) => {
@@ -109,7 +109,7 @@ const Add = () => {
     });
     console.log(cardData.CVC);
     if (target.value.length === 3) {
-      console.log("focus 이동 to second");
+      firstPasswordRef.current.focus();
     }
   };
   const setUserName = ({ target }) => {
@@ -150,6 +150,12 @@ const Add = () => {
   const moveNextPage = () => {
     navigate("/alias");
   };
+
+  const expireRef = useRef();
+  const cvcRef = useRef();
+  const firstPasswordRef = useRef();
+  const secondPasswordRef = useRef();
+
   return (
     <div className="app">
       <div className="page-title" onClick={moveListPage}>
@@ -237,6 +243,7 @@ const Add = () => {
             }
             min="2"
             max="2"
+            elRef={expireRef}
           />
           {renderDivider(cardData.expire.MM, 2, "/")}
           <Input
@@ -265,6 +272,7 @@ const Add = () => {
           type="text"
           onChange={setUserName}
           max="30"
+          elRef={cvcRef}
         />
       </div>
       <div className="input-container">
@@ -299,6 +307,7 @@ const Add = () => {
           min="1"
           max="1"
           width="w-15"
+          elRef={firstPasswordRef}
         />
         <Input
           value={cardData.password.second}
@@ -314,6 +323,7 @@ const Add = () => {
           min="1"
           max="1"
           width="w-15"
+          elRef={secondPasswordRef}
         />
 
         <Input type="password" min="1" max="1" width="w-15" />
