@@ -9,12 +9,26 @@ const CardCvcInput = ({cvc, setCVC, nextFocus}) => {
       value.length === 3 && nextFocus.current.focus();
     }
   }
+
+  const tooltipHandler = (e) => {
+    e.preventDefault();
+    console.log("working")
+  }
   return (
     <article className={styles.inputContainer}>
       <span className={styles.title}>보안코드(CVC/CVV)</span>
-      <div className={styles.inputBox}>
-        <input type="password" className={styles.inputBasic} onChange={onChange} value={cvc || ""}/>
+      <div className={styles.main}>
+        <div className={styles.inputBox}>
+          <input type="password" className={styles.inputBasic} onChange={onChange} value={cvc || ""}/>
+        </div>
+        <div className={styles.tooltip} onClick={tooltipHandler}>?
+          <span className={styles.image}>
+            <img src="https://static.thenounproject.com/png/1006865-200.png" />
+          </span>
+        </div>
       </div>
+      
+      
     </article>
   );
 };
