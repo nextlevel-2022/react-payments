@@ -16,7 +16,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "outDir": "./dist",
-    // "noUnusedLocals": false
+    "noUnusedLocals": false,
   },
   "include": ["src"]
 }
