@@ -1,22 +1,13 @@
-import React, { createRef } from "react";
-import { EmptyCardItem } from "../../components/EmptyCardItem";
+import React, { createRef, useState } from "react";
 import { Link } from "react-router-dom";
 
-const formNames = [
-  'cardNumber0',
-  'cardNumber1',
-  'cardNumber2',
-  'cardNumber3',
-  'mm',
-  'yy',
-  'owner',
-  'cvc',
-  'password0',
-  'password1',
-]
+import { formNames } from "../../constants";
+import { CardItem } from "../../components/CardItem";
 
 export default function AddCardPage() {
   const formRefs = formNames.map(() => createRef<HTMLInputElement>());
+  const [formData, setFormData] = useState(new Map());
+
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = ({ target }) => {
     const { name, value, maxLength } = target;
@@ -30,7 +21,11 @@ export default function AddCardPage() {
         ($nextInput as HTMLInputElement).select();
       }
     }
+
+    setFormData(formData.set(name, value))
   };
+
+  const getFormData = (name: string) => formData.get(name)
 
 
   return <div className="root">
@@ -40,7 +35,7 @@ export default function AddCardPage() {
           {'< 카드 추가'}
         </h2>
       </Link>
-      <EmptyCardItem/>
+      <CardItem cardNumber0={getFormData(formNames[0])}/>
       <div className="input-container">
         <label htmlFor={'input-card-number-1'} className="input-title">카드 번호</label>
         <div className="input-box">
@@ -48,6 +43,7 @@ export default function AddCardPage() {
             className="input-basic"
             name={formNames[0]}
             ref={formRefs[0]}
+            value={getFormData(formNames[0])}
             onChange={handleChange}
             type="text" maxLength={4}
           />
@@ -55,18 +51,22 @@ export default function AddCardPage() {
             className="input-basic"
             name={formNames[1]}
             ref={formRefs[1]}
+            value={formData.get(formNames[1])}
             onChange={handleChange}
-            type="text" maxLength={4}/>
+            type="text" maxLength={4}
+          />
           <input
             className="input-basic"
             name={formNames[2]}
             ref={formRefs[2]}
+            value={formData.get(formNames[2])}
             onChange={handleChange}
             type="password" maxLength={4}/>
           <input
             className="input-basic"
             name={formNames[3]}
             ref={formRefs[3]}
+            value={formData.get(formNames[3])}
             onChange={handleChange}
             type="password" maxLength={4}/>
         </div>
@@ -78,6 +78,7 @@ export default function AddCardPage() {
             className="input-basic"
             name={formNames[4]}
             ref={formRefs[4]}
+            value={formData.get(formNames[4])}
             onChange={handleChange}
             placeholder="MM"
             type="text" maxLength={2}/>
@@ -85,6 +86,7 @@ export default function AddCardPage() {
             className="input-basic"
             name={formNames[5]}
             ref={formRefs[5]}
+            value={formData.get(formNames[5])}
             onChange={handleChange}
             placeholder="YY"
             type="text" maxLength={2}/>
@@ -94,8 +96,9 @@ export default function AddCardPage() {
         <span className="input-title">카드 소유자 이름(선택)</span>
         <input
           className="input-basic"
-          name={formNames[5]}
-          ref={formRefs[5]}
+          name={formNames[6]}
+          ref={formRefs[6]}
+          value={formData.get(formNames[6])}
           placeholder="카드에 표시된 이름과 동일하게 입력하세요."
           type="text"
         />
@@ -104,8 +107,9 @@ export default function AddCardPage() {
         <span className="input-title">보안코드(CVC/CVV)</span>
         <input
           className="input-basic w-25"
-          name={formNames[6]}
-          ref={formRefs[6]}
+          name={formNames[7]}
+          ref={formRefs[7]}
+          value={formData.get(formNames[7])}
           onChange={handleChange}
           type="password" maxLength={3}/>
       </div>
@@ -113,13 +117,15 @@ export default function AddCardPage() {
         <span className="input-title">카드 비밀번호</span>
         <input
           className="input-basic w-15"
-          name={formNames[7]}
-          ref={formRefs[7]}
+          name={formNames[8]}
+          ref={formRefs[8]}
+          value={formData.get(formNames[8])}
           onChange={handleChange} type="password" maxLength={1}/>
         <input
           className="input-basic w-15"
-          name={formNames[8]}
-          ref={formRefs[8]}
+          name={formNames[9]}
+          ref={formRefs[9]}
+          value={formData.get(formNames[9])}
           onChange={handleChange} type="password" maxLength={1}/>
         <input
           className="input-basic w-15"
