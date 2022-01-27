@@ -1,6 +1,8 @@
-import React, { useRef, useState } from "react";
-import Input from "../components/Input";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Input from "../components/Input";
+import Modal from "../components/Modal";
+import { findCompany } from "../utils/index.js";
 
 const CardForm = ({ cardData, setCardData }) => {
   const navigate = useNavigate();
@@ -29,18 +31,18 @@ const CardForm = ({ cardData, setCardData }) => {
     //Validation
     const checkMonth = (target) => /^(0[1-9]|1[012])$/.test(target);
     const checkYear = (target) => /^(2[2-9]|[3-9][0-9])$/.test(target);
-    if (target.value.length !== 2) return;
-
-    if (position === "MM" && !checkMonth(target.value)) {
-      setErrorMsg({ ...errorMsg, expiredMonth: ERROR_MESSAGE.expiredMonth });
-      return;
+    if (target.value.length === 2 && position === "MM") {
+      if (!checkMonth(target.value)) {
+        setErrorMsg({ ...errorMsg, expiredMonth: ERROR_MESSAGE.expiredMonth });
+        return;
+      }
     }
-
-    if (position === "YY" && !checkYear(target.value)) {
-      setErrorMsg({ ...errorMsg, expiredYear: ERROR_MESSAGE.expiredYear });
-      return;
+    if (target.value.length === 2 && position === "YY") {
+      if (!checkYear(target.value)) {
+        setErrorMsg({ ...errorMsg, expiredYear: ERROR_MESSAGE.expiredYear });
+        return;
+      }
     }
-
     setErrorMsg({ ...errorMsg, expiredMonth: null, expiredYear: null });
 
     //changeValue
@@ -87,7 +89,6 @@ const CardForm = ({ cardData, setCardData }) => {
       ...cardData,
       CVC: target.value,
     });
-    console.log(cardData.CVC);
     if (target.value.length === 3) {
       firstPasswordRef.current.focus();
     }
@@ -103,6 +104,7 @@ const CardForm = ({ cardData, setCardData }) => {
   const cvcRef = useRef();
   const firstPasswordRef = useRef();
   const secondPasswordRef = useRef();
+  const secondCardNumberRef = useRef();
   //* Error
   const [errorMsg, setErrorMsg] = useState({
     cardNumber: null,
@@ -148,6 +150,19 @@ const CardForm = ({ cardData, setCardData }) => {
     }
     navigate("/alias");
   };
+
+  const [modalView, setModalView] = useState(false);
+
+  useEffect(() => {
+    const { first, second } = cardData.number;
+    if (first.length !== 4 || second.length !== 4) return;
+    if (document.activeElement !== secondCardNumberRef.current) return;
+
+    const cardCompany = findCompany(first, second);
+    cardCompany
+      ? setCardData({ ...cardData, cardName: cardCompany.name })
+      : setModalView(true);
+  }, [cardData.number]);
   return (
     <>
       <div className="input-container">
@@ -181,6 +196,7 @@ const CardForm = ({ cardData, setCardData }) => {
             }
             min="4"
             max="4"
+            elRef={secondCardNumberRef}
           />
           {renderDivider(cardData.number.second, 4, "-")}
           <Input
@@ -314,8 +330,8 @@ const CardForm = ({ cardData, setCardData }) => {
           elRef={secondPasswordRef}
         />
 
-        <Input type="password" min="1" max="1" width="w-15" />
-        <Input type="password" min="1" max="1" width="w-15" />
+        <Input value="*" type="password" width="w-15" readOnly />
+        <Input value="*" type="password" width="w-15" readOnly />
       </div>
       <div className="button-box">
         <span className="button-text" onClick={moveNextPage}>
@@ -323,6 +339,13 @@ const CardForm = ({ cardData, setCardData }) => {
         </span>
       </div>
       {renderErrorLog("nullCheck")}
+      {modalView && (
+        <Modal
+          cadrData={cardData}
+          setCardData={setCardData}
+          setModalView={setModalView}
+        />
+      )}
     </>
   );
 };
