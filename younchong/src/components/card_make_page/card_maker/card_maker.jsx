@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardCompanyModal from '../../modal_page/card_company_modal/card_company_modal';
@@ -10,7 +11,7 @@ import CardPasswordInput from '../card_password_input/card_password_input';
 import CardPreview from '../card_preview/card_preview';
 import styles from './card_maker.module.css';
 
-const CardMaker = () => {
+const CardMaker = ({setNewCard}) => {
   const [numbers, setNumber] = useState({});
   const [company, setCompany] = useState({});
   const [date, setDate] = useState({"MM": null, "YY": null});
@@ -22,7 +23,24 @@ const CardMaker = () => {
   const passwordRef =useRef();
   const nextBtnRef = useRef();
   const navigate = useNavigate();
+  let cardInfo = {};
+  useEffect(() => {
+    cardInfo = {
+      cardNumber: numbers,
+      date: date,
+      name: name,
+      cvc: cvc,
+      password: password,
+      company: company
+    };
+    
+  }, [numbers, company, date, name, cvc, password])
 
+  const nextPageButtonHandler = (e) => {
+    e.preventDefault();
+    setNewCard(cardInfo);
+    navigate("/add");
+  }
   return (
     <div className={styles.container}>
       {company === null && <CardCompanyModal setCompany={setCompany} />}
@@ -52,7 +70,7 @@ const CardMaker = () => {
         </form>
       </section>
       <footer className={styles.footer}>
-        <button ref={nextBtnRef} className={styles.button} onClick={() =>{navigate("/add")}}> <h4>다음</h4> </button>
+        <button ref={nextBtnRef} className={styles.button} onClick={nextPageButtonHandler}> <h4>다음</h4> </button>
       </footer>
     </div>
   );
