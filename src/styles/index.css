@@ -3,6 +3,7 @@
 @import "./button.css";
 @import "./modal.css";
 @import "./utils.css";
+@import "./color.css";
 
 body {
   display: flex;
@@ -17,7 +18,10 @@ input {
   font-size: 16px;
 }
 
-.root {
+#root {
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
   background-color: #fff;
   width: 375px;
   min-width: 375px;
