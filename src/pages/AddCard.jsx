@@ -50,10 +50,6 @@ const AddCard = () => {
     }
   };
 
-
-
-
-
   return (
     <>
       <div className="app">
