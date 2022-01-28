@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from'./card_preview.module.css';
 
-const CardPreview = ({numbers, date, name, company}) => {
+const CardPreview = ({numbers, date, name, company, nickName}) => {
   const getTheme = (company) => {
     if (company) {
       return {background : company.color};
@@ -21,7 +21,7 @@ const CardPreview = ({numbers, date, name, company}) => {
   return (
     <div className={styles.container} style={getTheme(company)} >
       <header className={styles.cardTop}>
-        <span className={styles.title}>{getTitle(company)}</span>
+        <span className={styles.title}>{nickName || getTitle(company)}</span>
       </header>
       <section className={styles.cardMiddle}>
         <article className={styles.cardChip}></article>

@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<CardMaker setNewCard={setNewCard}/>} />
-        <Route path="/list" element={<CardList cards={cards}/>} />
+        <Route path="/list" element={<CardList cards={cards} setNewCard={setNewCard} setCard={setCard}/>} />
         <Route path="/add" element={<CardAddPage card={newCard} setCard={setCard}/> } />
       </Routes>
     </BrowserRouter>

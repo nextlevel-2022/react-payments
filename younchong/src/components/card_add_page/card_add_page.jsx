@@ -5,14 +5,14 @@ import CardPreview from '../card_make_page/card_preview/card_preview';
 import styles from "./card_add_page.module.css";
 
 const CardAddPage = ({card, setCard}) => {
-  const {cardNumber, company, date, name, cvc, password} = card;
+  const {cardNumber, company, date, name, cvc, password, preNickname} = card;
   const [nickName, setNickName] = useState(null);
   const navigate = useNavigate();
   
   const onChange = (e) => {
     e.preventDefault();
     const value = e.currentTarget.value;
-    setNickName(value);
+    value.length <= 10 && setNickName(value);
   }
 
   const completeButtonHandler = (e) => {
@@ -22,9 +22,9 @@ const CardAddPage = ({card, setCard}) => {
       nickName: nickName ? nickName : company.name
     }
     setCard(cards => {
-      const update = {...cards};
+      const update = {};
       update[completeCard.nickName] = completeCard;
-
+      Object.assign(update, cards)
       return update;
     });
     navigate("/list");
@@ -37,7 +37,7 @@ const CardAddPage = ({card, setCard}) => {
           <CardPreview numbers={cardNumber} date={date} name={name} company={company} />
         </div>
         <div className={styles.inputContainer}>
-          <input className={styles.input} placeholder="카드 별칭(선택)" onChange={onChange}/>
+          <input className={styles.input} placeholder="카드 별칭(선택)" onChange={onChange} value={nickName || ""}/>
         </div>
       </section>
       <footer className={styles.footer}>
