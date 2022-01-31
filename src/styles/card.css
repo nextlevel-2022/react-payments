@@ -23,6 +23,9 @@
   border-radius: 5px;
 
   user-select: none;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .small-card {
@@ -79,6 +82,9 @@
 
   display: flex;
   align-items: center;
+
+  font-size: 13px;
+  margin-left: 26px;
 }
 
 .card-middle {
@@ -118,7 +124,7 @@
 }
 
 .card-text {
-  margin: 0 16px;
+  margin: 0 12px;
 
   font-size: 14px;
   line-height: 16px;
