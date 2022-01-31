@@ -20,8 +20,8 @@ export interface IState {
   cards: ICard[]
 }
 
-export interface PayloadAction {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface PayloadAction<Payload = any> {
   type: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload?: any;
+  payload: Payload;
 }

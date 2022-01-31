@@ -23,6 +23,10 @@
   color: #525252;
 }
 
+.input-length {
+  margin-left: auto;
+}
+
 .input-basic {
   background-color: #ecebf1;
   height: 45px;

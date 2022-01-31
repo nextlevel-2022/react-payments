@@ -13,19 +13,19 @@ export default function AddCardPage() {
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = ({ target }) => {
     const { name, value, maxLength } = target;
-    const isMaxLength = maxLength && value.length >= maxLength;
+    const isMaxLength = maxLength !== -1 && value.length >= maxLength;
+
+    dispatch(changeInput(name, value));
 
     if (isMaxLength) {
       const id = formNames.findIndex((_name) => _name === name);
 
-      const $nextInput = formRefs[id + 1].current;
+      const $nextInput = formRefs[id + 1]?.current;
 
       if ($nextInput) {
         ($nextInput as HTMLInputElement).select();
       }
     }
-
-    dispatch(changeInput(name, value))
   };
 
   return <div className="root">
@@ -47,6 +47,7 @@ export default function AddCardPage() {
             onChange={handleChange}
             type="text" maxLength={4}
           />
+          {card.cardNumber1 && '-'}
           <input
             className="input-basic"
             name={formNames[1]}
@@ -55,6 +56,7 @@ export default function AddCardPage() {
             onChange={handleChange}
             type="text" maxLength={4}
           />
+          {card.cardNumber2 && '-'}
           <input
             className="input-basic"
             name={formNames[2]}
@@ -62,6 +64,8 @@ export default function AddCardPage() {
             value={card.cardNumber2}
             onChange={handleChange}
             type="password" maxLength={4}/>
+
+          {card.cardNumber3 && '-'}
           <input
             className="input-basic"
             name={formNames[3]}
@@ -82,6 +86,7 @@ export default function AddCardPage() {
             onChange={handleChange}
             placeholder="MM"
             type="text" maxLength={2}/>
+          {card.yy && '/'}
           <input
             className="input-basic"
             name={formNames[5]}
@@ -93,14 +98,18 @@ export default function AddCardPage() {
         </div>
       </div>
       <div className="input-container">
-        <span className="input-title">카드 소유자 이름(선택)</span>
+        <span className="input-title">
+          <span>카드 소유자 이름(선택)</span>
+          <span className="input-length">{card.owner.length || 0}/30</span>
+        </span>
         <input
           className="input-basic"
           name={formNames[6]}
           ref={formRefs[6]}
           value={card.owner}
+          onChange={handleChange}
           placeholder="카드에 표시된 이름과 동일하게 입력하세요."
-          type="text"
+          type="text" maxLength={30}
         />
       </div>
       <div className="input-container">

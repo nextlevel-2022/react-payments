@@ -1,21 +1,8 @@
 import { CHANGE_INPUT } from "./action";
 import { identity } from "../utils";
 import { IState, PayloadAction } from "./types";
+import { cardHelper, cardHelperKeys } from "./storeHelper";
 
-
-const reducers = {
-  [CHANGE_INPUT]: (state: IState, action: PayloadAction) => {
-    const { name, value } = action.payload;
-
-    return {
-      ...state,
-      card: {
-        ...state.card,
-        [name]: value,
-      },
-    }
-  },
-}
 export const initialState: IState = {
   card: {
     cardNumber0: '',
@@ -31,6 +18,22 @@ export const initialState: IState = {
   },
   cards: [],
 };
+
+const reducers = {
+  [CHANGE_INPUT]: (state: IState, action: PayloadAction<{ name: string; value: string; }>) => {
+    const { name, value } = action.payload
+
+    const hookFn = (cardHelper[name as cardHelperKeys]?.hook || identity);
+
+    return {
+      ...state,
+      card: {
+        ...state.card,
+        [name]: hookFn(value),
+      },
+    }
+  },
+}
 
 export const reducer = (state: IState, action: PayloadAction) => {
   return (reducers[action.type] || identity)(state, action);
