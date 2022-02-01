@@ -2,9 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import CardPreview from '../card_make_page/card_preview/card_preview';
+import AddButton from './add_button/add_button';
 import styles from "./card_add_page.module.css";
+import DeleteButton from './delete_button/delete_button';
 
-const CardAddPage = ({card, setCard}) => {
+const CardAddPage = ({card, setCard, setNewCard}) => {
   const {cardNumber, company, date, name, cvc, password, preNickname} = card;
   const [nickName, setNickName] = useState(null);
   const navigate = useNavigate();
@@ -15,20 +17,7 @@ const CardAddPage = ({card, setCard}) => {
     value.length <= 10 && setNickName(value);
   }
 
-  const completeButtonHandler = (e) => {
-    e.preventDefault();
-    const completeCard = {
-      ...card,
-      nickName: nickName ? nickName : company.name
-    }
-    setCard(cards => {
-      const update = {};
-      update[completeCard.nickName] = completeCard;
-      Object.assign(update, cards)
-      return update;
-    });
-    navigate("/list");
-  }
+  
   return (
     <div className={styles.container}>
       <header className={styles.header}>카드 등록이 완료되었습니다!</header>
@@ -41,9 +30,8 @@ const CardAddPage = ({card, setCard}) => {
         </div>
       </section>
       <footer className={styles.footer}>
-        <button className={styles.button} onClick={completeButtonHandler}>
-          완료
-        </button>
+        <DeleteButton setNewCard={setNewCard} navigate={navigate} />
+        <AddButton card={card} nickName={nickName} setCard={setCard} navigate={navigate} />
       </footer>
     </div>
   );

@@ -41,18 +41,6 @@
 
 .footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 3rem;
-}
-
-.button {
-  font-size: 1.5rem;
-  border: none;
-  background: white;
-}
-
-.button:hover {
-  transform: scale(1.1);
-  transition: 1s;
-  cursor: pointer;
 }

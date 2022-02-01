@@ -45,9 +45,7 @@
 }
 
 .tooltip {
-  position: relative;
   display: block;
-
   
   color: #9ca3af;
   margin-left: 1rem;
