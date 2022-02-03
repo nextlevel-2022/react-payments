@@ -23,6 +23,7 @@ module.exports = {
 	plugins: ['react', '@typescript-eslint'],
 	rules: {
 		'no-unused-vars': 'off',
+		'@typescript-eslint/no-empty-function': ['error', { allow: ['arrowFunctions'] }],
 		'@typescript-eslint/ban-types': [
 			'error',
 			{
