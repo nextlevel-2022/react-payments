@@ -1,19 +1,26 @@
 import React from 'react';
-import Modal from '../../components/Modal';
 import Card from '../../components/Card';
 import CardForm from '../../components/CardForm';
+import { useCardList } from '../../contexts/cardList';
+import { useRouter } from '../../contexts/route';
 
 const CardEnroll = () => {
+	const { setRoute } = useRouter();
+	const { editingCard } = useCardList();
+
+	const onGoToBack = () => setRoute('LIST');
+
 	return (
-		<>
-			<Modal />
+		<div className="app">
 			<div className="flex-center-start">
-				<button className="back-button">&lt;</button>
+				<button className="back-button" onClick={onGoToBack}>
+					&lt;
+				</button>
 				<h2 className="page-title">카드 추가</h2>
 			</div>
-			<Card />
+			<Card type="small" card={editingCard} />
 			<CardForm />
-		</>
+		</div>
 	);
 };
 
