@@ -2,26 +2,11 @@ import React from 'react';
 import styles from'./card_preview.module.css';
 
 const CardPreview = ({numbers, date, name, company, nickName}) => {
-  const getTheme = (company) => {
-    if (company) {
-      return {background : company.color};
-    } else {
-      return;
-    }
-  }
-  const getTitle = (company) => {
-    if (company) {
-      const name = company.name !== "미선택" ? company.name : "";
-      return name;
-    } else {
-      return ;
-    }
-  }
 
   return (
-    <div className={styles.container} style={getTheme(company)} >
+    <div className={styles.container} style={company && {background: company.color}} >
       <header className={styles.cardTop}>
-        <span className={styles.title}>{nickName || getTitle(company)}</span>
+        <span className={styles.title}>{nickName || company && (company.name === "미선택" ? "" : company.name)}</span>
       </header>
       <section className={styles.cardMiddle}>
         <article className={styles.cardChip}></article>

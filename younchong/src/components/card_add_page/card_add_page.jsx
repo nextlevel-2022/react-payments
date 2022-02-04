@@ -1,10 +1,9 @@
-import React from 'react';
-import { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { React, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CardPreview from '../card_make_page/card_preview/card_preview';
 import AddButton from './add_button/add_button';
-import styles from "./card_add_page.module.css";
 import DeleteButton from './delete_button/delete_button';
+import styles from "./card_add_page.module.css";
 
 const CardAddPage = ({card, setCard, setNewCard}) => {
   const {cardNumber, company, date, name, cvc, password, preNickname} = card;
@@ -17,7 +16,6 @@ const CardAddPage = ({card, setCard, setNewCard}) => {
     value.length <= 10 && setNickName(value);
   }
 
-  
   return (
     <div className={styles.container}>
       <header className={styles.header}>카드 등록이 완료되었습니다!</header>

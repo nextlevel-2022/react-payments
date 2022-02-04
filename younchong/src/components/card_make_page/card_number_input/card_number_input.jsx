@@ -1,6 +1,4 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import { React, useEffect, useRef } from 'react';
 import { CARD_COMPANY_INFO } from './card_company_info';
 import styles from "./card_number_input.module.css";
 import Dash from './dash';
@@ -21,6 +19,7 @@ const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) =
   const numberChecker = (e) => {
     const id = e.currentTarget.id;
     const number = e.currentTarget.value;
+    console.log(typeof number);// String type으로 들어옴 수정!!
     if (isFinite(number) && number.length <= 4) {
       setNumber(numbers => {
       const updated = {...numbers};
@@ -30,10 +29,8 @@ const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) =
       
       number.length === 4 && nextRef[id].current.focus();
     } 
-    
   }
 
-  
   useEffect(() => {
     const firstEightDigit = numbers["firstInput"] + numbers["secondInput"];
     if (firstEightDigit.length === 8 && !company.name) {
@@ -46,7 +43,6 @@ const CardNumberInput = ({numbers, setNumber, nextFocus, setCompany, company}) =
       }
     }
   },[numbers])
-
 
   return (
     <article className={styles.inputContainer}>

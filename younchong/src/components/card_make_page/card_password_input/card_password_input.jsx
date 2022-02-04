@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import  { React, useRef } from 'react';
 import styles from './card_password_input.module.css';
 
 const CardPasswordInput = ({firstRef, password, setPassword, nextFocus}) => {

@@ -1,6 +1,4 @@
-import React, { useRef } from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { React, useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardCompanyModal from '../../modal_page/card_company_modal/card_company_modal';
 import CardCvcInput from '../card_cvc_input/card_cvc_input';

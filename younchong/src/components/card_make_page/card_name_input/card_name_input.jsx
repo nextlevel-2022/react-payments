@@ -8,18 +8,10 @@ const CardNameInput = ({name, setName, nameRef}) => {
       setName(value);
     }
   }
-  
-  const getResult = (value) => { // naming 고민
-    if (value) {
-      return `(${value.length} / 30)`;
-    } else {
-      return "카드 소유자 이름(선택)";
-    }
-  }
 
   return (
     <article className={styles.inputContainer}>
-      <span className={styles.title}>{`${getResult(name)}`}</span>
+      <span className={styles.title}>{name ? `${name.length} / 30` : `카드 소유자 이름(선택)`}</span>
       <div className={styles.inputBox}>
         <input type="text" className={styles.inputBasic} placeholder="카드에 표시된 이름과 동일게 입력하세요" onChange={onChange} ref={nameRef}/>
       </div>
