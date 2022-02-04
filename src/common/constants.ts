@@ -4,8 +4,8 @@ export type CardData = {
 	cardExpireDate: string;
 	cardOwner: string;
 	cardNickname: string;
-	password: string;
-	cvc: string;
+	password?: string;
+	cvc?: string;
 };
 
 export type CardType = 'small' | 'big' | 'new' | 'empty';

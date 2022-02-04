@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { CardData, CardType, cardColor } from '../../common/constants';
 import AddCard from './addCard';
 
