@@ -91,7 +91,7 @@
     "webpack-dev-server": "^4.7.3"
   },
   "scripts": {
-    "start": "webpack serve --mode=development --progress",
+    "start": "webpack serve --mode=development --progress --open",
     "build": "webpack --mode=production",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
