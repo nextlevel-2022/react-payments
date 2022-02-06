@@ -1,5 +1,6 @@
 .card-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -34,9 +35,42 @@
   width: 208px;
   height: 130px;
 
-  background: #94dacd;
+  background: #D2D2D2;
+  color: #525252;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+}
+
+.small-card.color-1 {
+  background-color: #E24141;
+}
+
+.small-card.color-2 {
+  background-color: #547CE4 ;
+}
+
+.small-card.color-3 {
+  background-color: #73BC6D;
+}
+
+.small-card.color-4 {
+  background-color: #DE59B9;
+}
+
+.small-card.color-5 {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(4, 192, 158, 0.31) 0%, rgba(4, 192, 158, 0.457344) 65.1%, #04C09E 100%);
+}
+
+.small-card.color-6 {
+  background-color: #E76E9A;
+}
+
+.small-card.color-7 {
+  background-color: #F37D3B;
+}
+
+.small-card.color-8 {
+  background-color: #FBCD58;
 }
 
 .small-card__chip {
@@ -58,9 +92,41 @@
   width: 290px;
   height: 180px;
 
-  background: #94dacd;
+  background: #D2D2D2;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+}
+
+.big-card.color-1 {
+  background-color: #E24141;
+}
+
+.big-card.color-2 {
+  background-color: #547CE4 ;
+}
+
+.big-card.color-3 {
+  background-color: #73BC6D;
+}
+
+.big-card.color-4 {
+  background-color: #DE59B9;
+}
+
+.big-card.color-5 {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(4, 192, 158, 0.31) 0%, rgba(4, 192, 158, 0.457344) 65.1%, #04C09E 100%);
+}
+
+.big-card.color-6 {
+  background-color: #E76E9A;
+}
+
+.big-card.color-7 {
+  background-color: #F37D3B;
+}
+
+.big-card.color-8 {
+  background-color: #FBCD58;
 }
 
 .big-card__chip {
@@ -88,6 +154,16 @@
 
   display: flex;
   align-items: center;
+}
+
+.card-middle__chip {
+  width: 40px;
+  height: 26px;
+  left: 95px;
+  top: 122px;
+
+  background-color: #cbba64;
+  border-radius: 4px;
 }
 
 .card-bottom {
@@ -119,6 +195,14 @@
 
 .card-text {
   margin: 0 16px;
+  font-size: 14px;
+  line-height: 16px;
+  vertical-align: middle;
+  font-weight: 400;
+}
+
+.card-text__small {
+  margin: 0 16px;
 
   font-size: 14px;
   line-height: 16px;
@@ -133,4 +217,24 @@
   line-height: 20px;
   vertical-align: middle;
   font-weight: 400;
+}
+
+.deletable {
+  position: relative;
+}
+
+.deletable .button {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  padding: 5px 7px 4px;
+  background-color: #c21;
+  color: #fff;
+  border-radius: 3px;
+  margin: 0;
+}
+
+.card-nickname {
+  display: block;
+  margin: 10px 0;
 }

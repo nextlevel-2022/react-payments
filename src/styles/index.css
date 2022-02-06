@@ -2,7 +2,15 @@
 @import "./input.css";
 @import "./button.css";
 @import "./modal.css";
+@import "./keypad.css";
 @import "./utils.css";
+
+html {
+  font-size: 14px;
+}
+* {
+  font-family: 'Roboto', sans-serif;
+}
 
 body {
   display: flex;
@@ -10,6 +18,7 @@ body {
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
+  min-height: calc(100vh - 1rem);
   background-color: #e5e5e5;
 }
 
@@ -17,7 +26,7 @@ input {
   font-size: 16px;
 }
 
-.root {
+#root {
   background-color: #fff;
   width: 375px;
   min-width: 375px;
@@ -31,12 +40,15 @@ input {
   padding: 16px 24px;
 }
 
+.page-container {
+  height: 100%;
+}
+
 .page-title {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 22px;
   display: flex;
   align-items: center;
-
   color: #383838;
 }
