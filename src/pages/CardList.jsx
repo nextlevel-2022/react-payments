@@ -31,8 +31,7 @@ const CardList = () => {
         </div>
         <span className="card-nickname">법인카드</span>
         <div className="card-box">
-          <div className="empty-card" onClick={() => history('/test')}>
-          {/* <div className="empty-card" onClick={() => history('/add')}> */}
+          <div className="empty-card" onClick={() => history('/add')}>
             +
           </div>
         </div>
