@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 5vh auto;
+  width: 55vw;
+  height: 100%;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.button {
+  background: transparent;
+  border: none;
+}
+
+.button:hover {
+  transform: scale(1.2);
+  transition-duration: 0.5s;
+}
+
+.preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateInput {
+  width: 50%;
+}
+
+.cvcInput {
+  width: 20%;
+}
+
+.passwordInput {
+  width: 60%;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}

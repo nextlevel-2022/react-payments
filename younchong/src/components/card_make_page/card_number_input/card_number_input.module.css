@@ -1,0 +1,55 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1em auto;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 14px;
+
+  margin-bottom: 4px;
+
+  color: #525252;
+}
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  margin-top: 0.3rem;
+  padding: 1rem;
+  color: #d3d3d3;
+  border-radius: 0.3rem;
+  background-color: #ecebf1;
+  
+}
+
+.inputBasic {
+  background-color: #ecebf1;
+  height: 1.5rem;
+  width: 100%;
+  text-align: center;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  border-color: #9ca3af;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.inputBasic:focus-within {
+  border: 3px solid black;
+}
+
+.inputBar.hidden{
+  visibility: hidden;
+}
+
+.inputBar.visible{
+  color: grey;
+  font-size: 2rem;
+  visibility: visible;
+}
