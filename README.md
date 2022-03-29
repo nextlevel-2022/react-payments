@@ -1,5 +1,7 @@
+# Demo
+<img src="https://im2.ezgif.com/tmp/ezgif-2-115436a15c.gif" height=500px />
 
-### 웹 VS CODE 환경
+# 웹 VS CODE 환경
 [바로가기](https://github.com/guymoon/react-payments/tree/guymoon---step1)
 
 # 0. 처음 시도한 것들 
