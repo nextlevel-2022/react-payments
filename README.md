@@ -1,115 +1,98 @@
-<p align="middle" >
-  <img src="https://techcourse-storage.s3.ap-northeast-2.amazonaws.com/0fefce79602043a9b3281ee1dd8f4be6" width="400">
-</p>
-<h2 align="middle">페이먼츠</h2>
-<p align="middle">React 모바일 페이먼츠 애플리케이션</p>
-</p>
+# Demo
+<img src="https://im2.ezgif.com/tmp/ezgif-2-115436a15c.gif" height=500px />
 
+# 웹 VS CODE 환경
+[바로가기](https://github.com/guymoon/react-payments/tree/guymoon---step1)
 
-# 미션 키워드 
-- Component
-- Props
-- Controlled & Uncontrolled Components
-- Storybook
-- Hooks API
-- Context API
+# 0. 처음 시도한 것들 
+- jest
+- react-testing-library
+- ts(이전에는 ts로 작성된 프로젝트를 수정하는 것 밖에 해보지 못함)
+- forwardRef
+- portals
 
-# Step1 - Component-Driven Development
-## 🚀 Getting Started
-> `Component-Driven Development` 에 따라 UI를 구성하고 재사용 가능한 `Component`를 작성합니다.
+# 1.고민한 내용
+
+## 1.1.카드 등록 검증 함수
+```js
+export const validateNewCard = (newCard: {
+  number: CardNumber;
+  cvc: string;
+  password: CardPassword;
+  expiredDate: CardExpiredDate;
+  cardCompany: CardCompany;
+}): void => {
+  const { number, expiredDate, cvc, password } = newCard;
+
+  const isValidCardNumberLength = Object.values(number).every(
+    (quarterCardNumber) => quarterCardNumber.length === 4,
+  );
+
+  const month = Number(expiredDate.month);
+  const year = Number(expiredDate.year);
+
+  const isValidExpiredMonth = month >= 1 && month <= 12;
+  const isValidExpiredYear = year >= 10 && year <= 50;
+
+  const isValidCvc = cvc.length === CARD_MAX_LENGTH.CVC;
+
+  const isValidPassword = Object.values(password).every((onePassword) => onePassword.length === 1);
+
+  const hasCompany = cardCompany.length > 0;
+
+  if (!isValidCardNumberLength) throw new Error(NEW_CARD_ERROR_MESSAGE.NUMBER);
+  if (!isValidExpiredMonth) throw new Error(NEW_CARD_ERROR_MESSAGE.EXPIRED_MONTH);
+  if (!isValidExpiredYear) throw new Error(NEW_CARD_ERROR_MESSAGE.EXPIRED_YEAR);
+  if (!isValidCvc) throw new Error(NEW_CARD_ERROR_MESSAGE.CVC);
+  if (!isValidPassword) throw new Error(NEW_CARD_ERROR_MESSAGE.PASSWORD);
+  if (!hasCompany) {
+    setIsOpenModal(true);
+    throw new Error(NEW_CARD_ERROR_MESSAGE.COMPANY);
+  }
+};
+```
+새로운 카드를 등록하려고 했을 때(정보를 입력하고 다음 버튼을 누른 후) 등록될 카드에 대한 검증을 해야만 했습니다. 그래서 위와 같은 함수를 작성했는데 여기서 궁금한 점이 생겼습니다.
+### 가독성? 메모리? 오버엔지니어링? 
+위에 함수 내부에서 검증 과정에서 가독성을 얻고자 isValidCardNumberLength, isValidExpiredMonth 등과 같은 불리언 변수를 만들고, 맨 아래에서 이 값들을 이용해 상황에 맞는 적절한 에러를 던져주었습니다. 그런데 이 작업이 과연 적절했는가에 대한 의문이 생겼습니다. 부적절 할 수 있다고 생각한 이유는 다음과 같습니다.
+- `is~`와 같은 변수 선언 없이 `if(A){throw Error(에러메시지}` 로 할 경우 에러 메시지에서 A를 설명 할 수 있지 않을까 싶었습니다. 
+- 변수 선언 자체도 메모리 
+- 저렇게 작업하므로써 validateNewCard 함수의 코드 라인이 길어짐 
+
+위와 같은 이유에도 불구하고, 우선 가독성을 얻어보자 생각해 수정하지 않았습니다. 그리고 다른 대안을 생각해봤습니다.
+- 유틸 함수로 분리 `is~~` 작업을 유틸 함수로 분리하고, 함수 내부에서는 유틸 함수들만을 이용해 error를 throw
+- 그냥 `if(A){throw new Error(에러메시지)}`
+
+리뷰어님께 어떤 방법을 선호하시는지 여쭤보고 싶습니다. 
  
-✔️ `모바일 타겟`의 웹 앱을 구현하며 사용하기 `편리한 모바일 UI/UX`에 대해 고민해봅니다.
-✔️ 다른 라이브러리나 프레임워크 없이 오로지 `React`만으로 상태를 관리하고 컴포넌트를 설계합니다.
-✔️ `재사용 가능한 Component`를 직접 작성하고 사용합니다.
-✔️ `Controlled` & `Uncontrolled Components`에 입각하여 `Form`을 핸들링합니다.
-✔️ [Github Repository](https://github.com/next-step/react-payments)
+## 1.2. input change 핸들러의 위치와 통일 여부
+저는 우선 카드 번호, 만료일 등과 같은 input에 대한 change 핸들러를 useCardForm 이라는 커스텀훅 분리해 만들었습니다. 
+```ts
+export default function useCardForm() {
+  const [cardNumber, setCardNumber] = useState<CardNumber>({});
+  const [password, setPassword] = useState<CardPassword>({});
+  const [expiredDate, setExpiredDate] = useState<CardExpiredDate>({});
+  const [holderName, setHolderName] = useState<Card['holderName']>('');
+  const [cvc, setCvc] = useState<Card['cvc']>('');
 
-## 📝 Requirements
-### 필수 요구사항 
-- [ ] `Storybook` 상호 작용 테스트
-- [ ] `재사용 가능한 Component` 작성
-#### 카드 추가
-- [ ] `<`(뒤로가기) 버튼 클릭 시, 카드 목록 페이지로 이동한다.
-- [ ] 카드 번호를 입력 받을 수 있다.
-    - [ ] 카드 번호입력 폼에 라벨을 보여준다.
-    - [ ] 카드 번호는 숫자만 입력가능하다.
-    - [ ] 카드 번호 4자리마다 `-`가 삽입된다.
-    - [ ] 카드 번호는 실시간으로 카드 UI에 반영된다.
-    - [ ] 카드 번호는 앞 8자리만 숫자로 보여지고, 나머지 숫자는 `*`로 보여진다.
-    - [ ] 카드 번호 앞 8자리로 카드사를 추정하여 그 테마를 카드 UI에 반영한다.
-    - [ ] 카드사가 선택되고 유효한 카드 번호 16자리를 모두 입력하면, 자동으로 만료일로 focus된다.
-    - [ ] 카드 앞 8자리 숫자를 입력하고 카드사가 선택되지 않은 경우, 나머지 카드 번호 입력 시도 시, 카드사 선택 모달이 보여진다.
-    - [ ] 유효하지 않은 카드 번호를 입력하면, 입력 폼 아래에 에러 메시지를 보여준다.
-- [ ] 만료일을 입력 받을 수 있다.
-    - [ ] 만료일 입력 폼에 라벨을 보여준다.
-    - [ ] `MM / YY` 로 placeholder를 적용한다.
-    - [ ] 월, 년 사이에 자동으로 `/`가 삽입된다.
-    - [ ] 만료일은 실시간으로 카드 UI에 반영된다.
-    - [ ] 월은 1이상 12이하 숫자여야 한다.
-    - [ ] 월, 년 입력이 유효하면 보안코드 입력으로 focus된다
-    - [ ] 유효하지 않은 만료일을 입력하면, 입력 폼 아래에 에러 메시지를 보여준다.
-- [ ] 보안코드를 입력 받을 수 있다.
-    - [ ] 카드 보안코드 입력 폼에 라벨을 보여준다.
-    - [ ] 보안코드는 `*`으로 보여진다.
-    - [ ] 보안코드 3자리가 입력되면 카드 비밀번호 입력으로 focus된다.
-    - [ ] 보안코드는 숫자만 입력가능하다.
-    - [ ] 유효하지 않은 보안코드를 입력하면, 입력 폼 아래에 에러 메시지를 보여준다.
-- [ ] 카드 비밀번호의 앞 2자리를 입력 받을 수 있다.
-    - [ ] 카드 비밀번호 입력 폼에 라벨을 보여준다.
-    - [ ] 카드 비밀번호는 각 폼마다 한자리 숫자만 입력가능하다.
-    - [ ] 첫자리 입력이 완료되면 둘째자리 입력으로 focus된다.
-    - [ ] 카드 번호 입력 시, `*`으로 보여진다.
-    - [ ] 유효하지 않은 카드 비밀번호를 입력하면, 입력 폼 아래에 에러 메시지를 보여준다.
-- [ ] 카드 소유자 이름을 입력 받을 수 있다.
-    - [ ] 카드 소유자 이름 입력 폼 라벨을 보여준다.
-    - [ ] 이름은 30자리까지 입력할 수 있다.
-    - [ ] 이름 입력 폼 위에, 현재 입력 자릿수와 최대 입력 자릿수를 실시간으로 보여준다.
-- [ ] 클릭 시, 카드 등록 완료 페이지로 이동한다.
-### 심화 요구사항 (선택사항)
-- [ ] `Storybook` 단위 테스트
-- [ ] 유효성 검증 실패에 대한 UI/UX 추가
-- [ ] 카드사 선택
-  - [ ] 카드사를 선택하면 모달이 닫히고, 그 테마를 카드 UI에 반영한다.
-  - [ ] 카드사를 선택하지 않아도 모달을 닫을 수 있다.
-- [ ] 보안코드 툴팁
-  - [ ] 클릭 시, 보안코드 관련 안내 메시지를 보여준다.
-  - [ ] focusout 시, 툴팁이 닫힌다.
-- [ ] 가상 키보드
-  - [ ] 마스킹 처리된 값 입력시 사용
-  - [ ] 숫자를 랜덤으로 배열
+  const onChangeCardNumbers = {};
+  const onChangeExpiredDate = {};
+  const onChangeCardHolderName = {};
+```
+### 1.2.1 change 핸들러 하나로 통일?
+통일 시킬 수는 있었으나 `onChange~` 핸들러를 각각 따로 지정해주었습니다. 왜냐하면 파라미터가 너무 많아지고, 내부 구조를 정확히 알아야지만 사용 할 수 있는 어려운 `onChange~`가 될 것 같았습니다. 그래서 각각 따로 지정해줬습니다. 리뷰어님은 `onChange~` 들을 하나로 통일 시킬 수 있다면 통일 시키는 것이 좋다고 생각하시는 궁급합니다!
 
-# Step2 - Controlled & Uncontrolled Components + Context API
-## 🚀 Getting Started
-> `Component-Driven Development` 에 따라 UI를 구성하고 재사용 가능한 `Component`를 작성합니다.
- 
-✔️ `모바일 타겟`의 웹 앱을 구현하며 사용하기 `편리한 모바일 UI/UX`에 대해 고민해봅니다.
-✔️ 다른 라이브러리나 프레임워크 없이 오로지 `React`만으로 상태를 관리하고 컴포넌트를 설계합니다.
-✔️ React `Context API`를 활용합니다.
-✔️ `재사용 가능한 Component`를 직접 작성하고 사용합니다.
-✔️ `Controlled` & `Uncontrolled Components`에 입각하여 `Form`을 핸들링합니다.
-✔️ [Github Repository](https://github.com/next-step/react-payments)
-## 📝 Requirements
-### 필수 요구사항 
-- [ ] `Storybook` 상호 작용 테스트
-- [ ] `Controlled` & `Uncontrolled Components`에 입각하여 `Form` 핸들링
-- [ ] `Context API`를 활용해 전역 상태 관리 및 계층 재구성
-#### 카드 추가 확인
-- [ ] 이전 폼에서 입력된 카드를 보여준다.
-- [ ] 카드 별칭을 입력할 수 있다.
-    - [ ] placeholder는 `카드 별칭 (선택)`이다.
-    - [ ] 빈 입력값인 경우, 카드사 이름이 별칭으로 저장된다.
-    - [ ] 최대 길이는 10자리이다.
-- [ ] 확인 버튼을 누르면, 카드 목록 페이지로 이동한다.
-#### 카드 목록
-- [ ] 카드 목록을 조회할 수 있다.
-- [ ] 카드 목록은 최신순(내림차순)으로 정렬된다.
-- [ ] 목록 최상단에 `+`을 누르면 카드 추가 페이지로 이동한다.
-- [ ] 카드를 클릭하면, 카드 별칭 수정(카드 추가 완료 페이지)로 이동한다.
-- [ ] 카드를 삭제할 수 있다.
-### 선택 요구사항
-- [ ] `Storybook` 스냅샷 테스트
-- [ ] 비동기 통신
-  - [ ] 다양한 도구를 활용 (예 JSON Server, Strapi 등등)
-  - [ ] 등록된 카드 정보를 CRUD 합니다.
-- [ ] 나열된 카드 클릭시 `카드 추가 확인` 화면 재활용
-  - [ ] 별칭 수정 가능
+### 1.2.2. 커스텀 훅에서 분리하는 것이 맞을까? 
+커스텀 훅으로 분리하였으나 재사용은 불가능 합니다. 지금까지 저는 재사용 할 수 없으면 change 핸들러는 사용하는 쪽에서 가장 가까운 곳에 위치하는 것이 좋다고 생각했습니다. 그러나 이번에는 아래와 같은 이유로 분리했습니다. 
+- 전역 상태 관리가 불가능해 어차피 페이지 컴포넌트에서 state를 선언하고, 자식 컴포넌트로 props로 내려줘야 한다. 따라서 사용하는 컴포넌트에서 선언해 사용 할 수 없다.
+- 그러므로 관련 로직을 하나의 커스텀 훅으로 분리해 커스텀 훅 내부에서만 onChange 관련 로직을 다룬다. 
+그럼에도 불구하고 재사용 가능하지 않으므로 커스텀 훅 분리가 의미있는지 궁금합니다!
+
+## 1.3. 테스트를 위해 파라미터를 항상 만들어야 할까?
+이번에 처음에는 `validateNewCard()` 함수를 만들 때 파라미터를 받지 않도록 만들었습니다. 왜냐하면 직접 참조 할 수 있는 상태들이 존재했기 때문에 파라미터 없이도 작업 할 수 있었기 때문입니다. 그리고 파라미터가 없다면 좀 더 편하게 함수를 사용 할 수 있다고 생각했습니다. 그러나 문제는 테스트를 하려고 할 때 발생했습니다. 테스트를 하려고하니 파라미터가 없어 테스트 할 수 없었습니다ㅜㅜ 테스트를 가능한 함수를 위해서는 항상 파라미터로 값을 받도록 작성하는 습관을 길러야 할까요? 저는 파라미터가 없으면 좀 더 내부 구조 신경 안 쓰고 편리하게 사용 할 수 있다고 생각했습니다. 그래서 만약 재사용 할 것이 아니라면 분리하는 것 보다는 사용하는 곳 가장 가까운 곳에서 정의되면 좋다고 생각했습니다. 리뷰어님의 의견이 궁금합니다!! 
+
+# 2. 느낀점
+- onChange 관련 로직에서 유효성 검사를 하지 말자. 유효성 검사를 onChange 부분에서 하니 유효성 관련 로직을 테스트하기 어렵다.
+- 검증로직을 담고 있는 함수(validateNewCard)에서 검증 부분 외 다른 로직을 담지 말자 
+  - validateNewCard에서 만약 카드 회사가 선택되지 않았다면 `setOpenCardCompanyModal`을 해줬다. 그러나 검증 과정을 테스트하는 과정에서 모달 관련 로직이 들어있어 테스트하기 어려웠다. 그래서 분리했고, 좀 더 `validate~` 라는 네이밍에 맞는 함수를 만들 수 있었다. 
+- 테스트를 작성하자. 지금까지 테스트는 정말 잘 동작하는지 테스트하기 위해서만 작성하는 것이라 생각했다. 그러나 테스트를 작성하면서 테스트 가능한 함수(좀 더 단일 책임 원칙에 맞는 함수)를 만드는 경험을 했다. 
+
